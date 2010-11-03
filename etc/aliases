@@ -1,6 +1,14 @@
 #!/bin/bash
 # These are aliases I find handy.
 
+# The variables defined here are pretty much specific to the aliases defined here, but could be used elsewhere as well.
+
+# WS92 and WS93 are workspace directories for our two major projects.
+# The way it's set up, you can just change these to variables to whatever you want, and the aliases will follow
+# along just fine.
+export WS92='~/ws92'
+export WS93='~/ws93'
+
 # System-specific aliases
 alias c='clear'
 alias bb="$BROWSER"
@@ -15,19 +23,19 @@ alias start_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM start"
 alias stop_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM stop"alias antn='ant -f build9ci.xml'
 
 # Grails development related aliases.
-alias cda2='cd ~/ws92/ar-branch-9-2'
-alias cda='cd ~/ws93/ar'
-alias cdb2='cd ~/ws92/database'
-alias cdb='cd ~/ws93/database'
-alias cdc='cd $CATALINA_HOME/'
-alias cdd='cd ~/ws92/dcs'
-alias cdg='cd ~/ws93/greenbill'
-alias cdq='cd ~/ws93/quickbooks'
-alias cdr2='cd ~/ws92/rally-branch-0-3'
-alias cdr='cd ~/ws93/rally'
-alias cdp='cd ~/ws93/payment-gateway'
-alias cds='cd ~/ws93/sparkle'
-alias cds2='cd ~/ws92/sparkle'
+alias cda2='cd $WS92/ar-branch-9-2'
+alias cda='cd $WS93/ar'
+alias cdb2='cd $WS92/database'
+alias cdb='cd $WS93/database'
+alias cdd='cd $WS92/dcs'
+alias cdg='cd $WS93/greenbill'
+alias cdq='cd $WS93/quickbooks'
+alias cdr2='cd $WS92/rally-branch-0-3'
+alias cdr='cd $WS93/rally'
+alias cdp='cd $WS93/payment-gateway'
+alias cds='cd $WS93/sparkle'
+alias cds2='cd $WS92/sparkle'
+alias cdt='cd $CATALINA_HOME/'
 alias cddcs='cd ~/Workspaces/913/DCS'
 alias cdrev='cd ~/Workspaces/913-revlon/DCS'
 alias g="grails"
