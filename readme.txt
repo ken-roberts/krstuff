@@ -21,4 +21,12 @@ have, as is proper.
 The setup is a bit more complex than would normally be necessary, but I tried to make it so you could take it in
 chunks if you like.
 
+If you only want to take part of the tools, then open krstuff/etc/profile to get segments to copy in, or you can pull
+bits out of the krstuff structure to put into your own directories.
+
+Changing things directly will possibly interfere with updates later.
+
+Please note that these are my personal scripts, and while I don't mind others using them I am not really trying to
+make anything universally useful at this point.
+
 Thanks.
