@@ -1,0 +1,5 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Prints the current date using 2 specified delimiters, in ISO format.
+# For example, 'ts - :' returns something like '2010-11-02-12:53:02'
+date +%Y$1%m$1%d-%H$2%M$2%S

@@ -1,0 +1,6 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Finds all files whose name matches the parameter exactly, and prints the relative directory which
+# contains that file, without the file name.
+
+find . -name "$1" -print | sed "s/$1$//"

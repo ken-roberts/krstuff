@@ -1,0 +1,6 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Searches for xml files containing the parameter, and edits them
+# Case insensitive.
+
+$EDITOR `find . -name '*.xml' -print | xargs egrep -il "\<$1\>"` "+/\<$1\>"

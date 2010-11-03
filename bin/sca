@@ -1,0 +1,4 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Pulls the list of desirable files from the subversion status, for use in a commit command.
+svn status | egrep -v '(^\?|\.tmproj|BuildConfig.groovy|application.properties)' | sed 's/^.       //'

@@ -1,0 +1,6 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Searches for files with the given name and a .java extension, and edits them.
+# Ignores .svn directories.
+
+vim `find . -name $1.java -print`

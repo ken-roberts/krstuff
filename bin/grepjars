@@ -1,0 +1,11 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Lists any jars in the current directory structure which contain a class with the indicated name.
+# Case insensitive.
+
+for file in $(find . -name '*.jar' -print)
+do
+	#echo $file
+	jar -tf $file | grep --label $file -il $1
+done
+exit 0

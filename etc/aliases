@@ -1,0 +1,68 @@
+#!/bin/bash
+# These are aliases I find handy.
+
+# System-specific aliases
+alias c='clear'
+alias bb="$BROWSER"
+alias df='df -m'
+alias ll='ls -alhG'
+alias ps='/bin/ps ax'
+alias psj='/bin/ps ax | grep java'
+alias psg='/bin/ps ax | grep'
+alias rdesktop='/usr/bin/rdesktop -a 16 -g 1024x768 -r disk:home=/home/ken'
+alias rdp='/usr/bin/rdesktop -a 16 -g 1908x1000 -r disk:home=/home/ken'
+alias start_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM start"
+alias stop_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM stop"alias antn='ant -f build9ci.xml'
+
+# Grails development related aliases.
+alias cda2='cd ~/ws92/ar-branch-9-2'
+alias cda='cd ~/ws93/ar'
+alias cdb2='cd ~/ws92/database'
+alias cdb='cd ~/ws93/database'
+alias cdc='cd $CATALINA_HOME/'
+alias cdd='cd ~/ws92/dcs'
+alias cdg='cd ~/ws93/greenbill'
+alias cdq='cd ~/ws93/quickbooks'
+alias cdr2='cd ~/ws92/rally-branch-0-3'
+alias cdr='cd ~/ws93/rally'
+alias cdp='cd ~/ws93/payment-gateway'
+alias cds='cd ~/ws93/sparkle'
+alias cds2='cd ~/ws92/sparkle'
+alias cddcs='cd ~/Workspaces/913/DCS'
+alias cdrev='cd ~/Workspaces/913-revlon/DCS'
+alias g="grails"
+alias gca="grails clean"
+alias gda="mv dcs.war $CATALINA_HOME/webapps"
+alias gdevdb="grails dev create-db clean --non-interactive=y"
+alias gec='$EDITOR application.properties grails-app/conf/BuildConfig.groovy'
+alias gproddb="grails prod create-db clean --non-interactive=y"
+alias gra="grails run-app"
+alias grat="grails test run-app"
+alias graw="g clean;g compile; gant grailsDeploy; grails test run-war"
+alias grw="gant grailsDeploy; grails test run-war"
+alias gta="grails test-app"
+alias gtestdb="grails test create-db clean --non-interactive=y"
+alias gwar='g2 clean;gant clean;rm web-app/lib/dcs.war;g2 compile;gant grailsDeploy;g2 war dcs92prod.war --non-interactive=y'
+alias gward='g2 clean;gant clean;rm web-app/lib/dcs.war;g2 compile;gant grailsDeploy;g2 dev war dcs92dev.war --non-interactive=y'
+alias gwart='g2 clean;gant clean;rm web-app/lib/dcs.war;g2 compile;gant grailsDeploy;g2 test war dcs92test.war --non-interactive=y'
+alias si='svn info'
+alias ss='svn status'
+alias sd='svn diff'
+alias sl='svn log -l 10'
+alias sup='/opt/subversion/bin/svn up'
+alias tcq='$CATALINA_HOME/bin/shutdown.sh'
+alias tcr='rm -rf $CATALINA_HOME/temp/* $CATALINA_HOME/work/* $CATALINA_HOME/webapps/dcs* $CATALINA_HOME/logs/*;$CATALINA_HOME/bin/startup.sh;tail -n 1000 -F $CATALINA_HOME/logs/catalina.out'
+#alias rmsvn='rm -rf `find . -type d -name .svn`'
+
+
+
+#function switchGrails() {
+#    echo "Switching to grails version: $1"
+#    sudo rm /usr/local/{grails}
+#    sudo ln -s /usr/local/$1 /usr/local/grails
+#    echo "Done!"
+#    ls -latr /usr/local/{grails}
+#}
+ 
+#alias g12='switchGrails "grails-1.2"'
+#alias g12m2='switchGrails "grails-1.2-M2"'

@@ -1,0 +1,6 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Lists the targets in DataSource.groovy.
+
+egrep -v '(dataLoad|dataSource|=|}|^\s*$|hibernate)' grails-app/conf/DataSource.groovy \
+| egrep '\S*'

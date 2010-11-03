@@ -1,0 +1,5 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Finds all files whose name matches the parameter exactly, and prints the relative file name from the
+# current location
+find . -name "$1" -print

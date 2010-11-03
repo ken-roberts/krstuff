@@ -1,0 +1,17 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Searches local javadocs for classes whose documentation contains the parameter, makes a list of all
+# matches and opens the list in your browser.
+# Case insensitive
+
+SEARCHRESULTS=/tmp/search-contents.html
+
+echo '<html><head><title>JavaDocs Search Results</title><body>' > $SEARCHRESULTS
+echo '<h3>search results</h3>' >> $SEARCHRESULTS
+
+find $DOCUMENTATION/ -iname "*.html" -follow -print \
+        | xargs grep -il "$1" \
+        | sed 's/..*/<a href="file:\/\/&">&<\/a><br>/' | sort >> $SEARCHRESULTS
+echo '</body></html>' >> $SEARCHRESULTS
+
+$BROWSER $SEARCHRESULTS

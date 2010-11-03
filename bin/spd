@@ -1,0 +1,31 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Grails plugin-specific.  Compares the current checked-out version (NOTHING LOCAL!) of the project with its
+# latest released plugin.  This is svn to svn, local changes do not count!
+
+APP="`grep 'app\.name' application.properties | sed 's/..*=\(.*\)/\1/'`";
+#echo "APP = $APP";
+
+# Detect if there is a GrailsPlugin file, if not then continuing will compare the current with the entire tags directory!  Very bad!
+ls -l *GrailsPlugin.groovy > /dev/null 2>&1; if [ "$?" != "0" ];then
+	echo "You are not in the base directory of a grails plugin project.  Diff fails!"
+	exit 1
+fi
+
+VERSION="`grep 'def version' *GrailsPlugin.groovy | sed 's/.*\"\(.*\)\"/RELEASE_\1/' | sed 's/\./_/g'`";
+#echo "VERSION = $VERSION";
+
+TAG="`bs $APP`/tags/`grep 'def version' *GrailsPlugin.groovy | sed 's/.*\"\(.*\)\"/RELEASE_\1/' | sed 's/\./_/g'`";
+#echo "TAG = $TAG";
+
+CURRENT=`svn info | grep URL | sed 's/..*\(http..*\)/\1/'`;
+#echo "CURRENT = $CURRENT";
+
+echo "Comparing $APP latest release tag with the current checked-out version."
+echo "THIS DOES NOT INCLUDE LOCAL CHANGES!"
+echo "svn diff";
+echo "	---	$TAG";
+echo "	+++	$CURRENT";
+
+COMMAND="svn diff $TAG $CURRENT";
+$COMMAND

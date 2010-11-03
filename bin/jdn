@@ -1,0 +1,20 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Searches local javadocs for any class whose name contains the indicated string, makes a list of all
+# matches and opens the list in your browser.
+# Case insensitive
+
+SEARCHRESULTS=/tmp/search`ts`.html
+
+echo '<html><head><title>JavaDocs Search Results</title><body>' > $SEARCHRESULTS
+echo '<h3>search results</h3>' >> $SEARCHRESULTS
+find $DOCUMENTATION/ -name "*$1*.html" -follow -print \
+        | sed 's/..*/<a href="file:\/\/&">&<\/a><br>/' \
+        | sed 's/\.html</</' \
+        | sort >> $SEARCHRESULTS
+echo '</body></html>' >> $SEARCHRESULTS
+
+#$BROWSER -remote "openurl($SEARCHRESULTS, new-window)"
+dillo $SEARCHRESULTS
+
+#rm $SEARCHRESULTS
