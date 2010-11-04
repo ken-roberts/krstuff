@@ -6,8 +6,8 @@
 # WS92 and WS93 are workspace directories for our two major projects.
 # The way it's set up, you can just change these to variables to whatever you want, and the aliases will follow
 # along just fine.
-export WS92='~/ws92'
-export WS93='~/ws93'
+export WS92="$HOME/ws92"
+export WS93="$HOME/ws93"
 
 # System-specific aliases
 alias c='clear'
