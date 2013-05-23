@@ -1,0 +1,11 @@
+#!/bin/bash
+# Tomcat flush
+# Remove the temp files and possibly a file set from the webapps directory.
+# Requires that CATALINA_HOME be set properly, and that the server be stopped when the script runs.
+
+rm -rf $CATALINA_HOME/temp/*
+rm -rf $CATALINA_HOME/work/*
+if [ -n $1 ];then
+	echo "Gonna zap `ls $CATALINA_HOME/webapps/$1*`"
+	rm -rf $CATALINA_HOME/webapps/$1*
+fi

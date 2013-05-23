@@ -1,0 +1,7 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# After running grails test-app, run this command to open all reports of failures or errors in your editor.
+# This is better than browsing the directory because it ONLY opens files with broken tests.
+
+cat `ls target/test-reports/TEST-*.xml \
+	| xargs grep -L '<testsuite errors="0" failures="0"'`

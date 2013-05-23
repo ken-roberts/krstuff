@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# -lt 3 ]
+then
+	echo "ddif compares two directories which are similar to each other, omitting volatile directories for svn and grails."
+	echo "Usage: ddif <firstdir> <seconddir> <flags> {<path>}"
+	echo "    ddif first second -rbq                     will return a list of differing files."
+	echo "    ddif first second -rb                      will return the differences."
+	echo "    ddif first second -rb  grails-app/conf     will return the differences in the grails-app/conf directory."
+	exit 1
+fi
+diff --exclude=".svn" --exclude=".grails" --exclude="target" --exclude="**/stacktrace.log" $3 $1/$4 $2/$4

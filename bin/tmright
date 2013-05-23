@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for file in "$@"
+do
+	echo "working with $file"
+	mv $file $file.tmreset
+	awk '\
+{print}; \
+/<key>windowFrame<\/key>/{getline; gsub("<string..*", "<string>{{961, 0}, {960, 1080}}<\/string>\t<!--ken was here-->"); print}; \
+/<key>showFileHierarchyDrawer<\/key>/{getline; gsub("<..*", "<false\/>"); print}; \
+' $file.tmreset > $file
+	rm $file.tmreset
+done

@@ -7,32 +7,37 @@ export ANT_HOME='/opt/ant/current'
 export CATALINA_HOME='/opt/tomcat6/current'
 export ECLIPSE_HOME='~/eclipse'
 export GANT_HOME='/opt/gant/current'
+export GRADLE_HOME='/opt/gradle/current'
 export GRAILS_HOME='/opt/grails/current'
 export GROOVY_HOME='/opt/groovy/current'
 export JAVA_HOME="/Library/Java/Home"
 export MDP_HOME="/Users/ken/src/markdown-plus"
 export MULTIMARKDOWN_HOME='/opt/multimarkdown/current'
+export PHANTOMJS_HOME='/opt/phantomjs/current'
 
 # These are OPTS variables for the above.
-export GRAILS_OPTS='-Xmx1024M -XX:MaxPermSize=256m'
-export JAVA_OPTS="-Xmx768m -XX:MaxPermSize=256m"
+export GRAILS_OPTS='-Xmx1024M -XX:MaxPermSize=384M'
+export JAVA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
+export CATALINA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
 
 # PATHS are done here because of the inherent relation to HOMEs
 export SYSPATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 export PATH=".:\
 $HOME/bin:\
 $KRSTUFF_HOME/bin:\
-$ANT_HOME/bin:\
-$CATALINA_HOME/bin:\
-$ECLIPSE_HOME/bin:\
 $GRAILS_HOME/bin:\
 $GROOVY_HOME/bin:\
+$GRADLE_HOME/bin:\
 $GANT_HOME/bin:\
+$ANT_HOME/bin:\
+$PHANTOMJS_HOME/bin:\
+$CATALINA_HOME/bin:\
 /opt/local/bin:\
 /opt/local/sbin:\
 /usr/local/mysql/bin:\
 /opt/subversion/bin:\
 $MULTIMARKDOWN_HOME/bin:\
+$ECLIPSE_HOME/bin:\
 $MDP_HOME:\
 $SYSPATH"
 

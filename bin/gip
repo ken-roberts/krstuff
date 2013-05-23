@@ -1,0 +1,3 @@
+#!/bin/bash
+grails install-plugin ../$1/grails-$1-$2.zip
+

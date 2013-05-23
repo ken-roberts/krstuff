@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find . -name '*.css' -print | xargs egrep -i '[^\.]\<(table|tr|td|th)\>'

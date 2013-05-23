@@ -1,0 +1,23 @@
+if [ $# -eq 0 ];then
+	echo "Usage: agrep pattern {filename-pattern}"
+	echo "	arguments:"
+	echo "		pattern: A case insensitive pattern to look for in the file."
+	echo "		filename-pattern: An optional case insensitive filename pattern."
+	echo "	Examples:"
+	echo "		agrep custid"
+	echo "		agrep createdby ardoc*"
+	exit 0
+fi
+
+
+
+if [[ -n "$2" ]];then
+	NAME="-and -iname '$2'"
+fi
+
+CMD="find . -type f $NAME -print | grep -v '\.svn' | xargs grep -i $1"
+
+echo $CMD
+echo
+
+eval $CMD

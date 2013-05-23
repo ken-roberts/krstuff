@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Exporting $1..."
+grails -Dgrails.env=dcspdev export-data $1
+echo "Replacing the sql/data/out file with the db/data/demo file:"
+ls -al sql/data/out/$1.xml db/data/demo/$1.xml
+mv sql/data/out/$1.xml db/data/demo/$1.xml
+

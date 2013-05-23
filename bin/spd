@@ -12,10 +12,10 @@ ls -l *GrailsPlugin.groovy > /dev/null 2>&1; if [ "$?" != "0" ];then
 	exit 1
 fi
 
-VERSION="`grep 'def version' *GrailsPlugin.groovy | sed 's/.*\"\(.*\)\"/RELEASE_\1/' | sed 's/\./_/g'`";
+VERSION="`grep 'def version' *GrailsPlugin.groovy | sed 's/.*\"\(.*\)\"/v\1/' | sed 's/\./_/g'`";
 #echo "VERSION = $VERSION";
 
-TAG="`bs $APP`/tags/`grep 'def version' *GrailsPlugin.groovy | sed 's/.*\"\(.*\)\"/RELEASE_\1/' | sed 's/\./_/g'`";
+TAG="`bs $APP`/tags/`grep 'def version' *GrailsPlugin.groovy | sed 's/.*\"\(.*\)\"/v\1/' | sed 's/\./_/g'`";
 #echo "TAG = $TAG";
 
 CURRENT=`svn info | grep URL | sed 's/..*\(http..*\)/\1/'`;

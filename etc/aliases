@@ -6,13 +6,26 @@
 # WS92 and WS93 are workspace directories for our two major projects.
 # The way it's set up, you can just change these to variables to whatever you want, and the aliases will follow
 # along just fine.
-export WS92="$HOME/ws92"
-export WS93="$HOME/ws93"
+export WS913="$HOME/ws/913"
+export WS92="$HOME/ws/92"
+export WS93="$HOME/ws/93"
+export WS94="$HOME/ws/94"
+export WS95="$HOME/ws/95"
+export WST="$HOME/ws/trunk"
+export WSTH="$WST/head"
+export WSCQ="$WS94/carquestusa"
+export WSCA="$WS95/cqca"
+export WSKOLCRAFT="$WS93/kolcraft"
+export WSRAND="$WS92/rand"
+export WSREVLON="$WS913/revlon"
+export WSTTI="$WS95/tti"
+
 
 # System-specific aliases
 alias c='clear'
 alias bb="$BROWSER"
 alias df='df -m'
+alias err='open  target/test-reports/html/index.html'
 alias ll='ls -alhG'
 alias ps='/bin/ps ax'
 alias psj='/bin/ps ax | grep java'
@@ -23,45 +36,75 @@ alias start_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM start"
 alias stop_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM stop"alias antn='ant -f build9ci.xml'
 
 # Grails development related aliases.
-alias cda2='cd $WS92/ar-branch-9-2'
-alias cda='cd $WS93/ar'
-alias cdb2='cd $WS92/database'
-alias cdb='cd $WS93/database'
-alias cdd='cd $WS92/dcs'
-alias cdg='cd $WS93/greenbill'
-alias cdq='cd $WS93/quickbooks'
-alias cdr2='cd $WS92/rally-branch-0-3'
-alias cdr='cd $WS93/rally'
-alias cdp='cd $WS93/payment-gateway'
-alias cds='cd $WS93/sparkle'
-alias cds2='cd $WS92/sparkle'
-alias cdt='cd $CATALINA_HOME/'
-alias cddcs='cd ~/Workspaces/913/DCS'
-alias cdrev='cd ~/Workspaces/913-revlon/DCS'
+alias cd1='cd $WS913'
+alias cd2='cd $WS92'
+alias cd3='cd $WS93'
+alias cd4='cd $WS94'
+alias cd5='cd $WS95'
+alias cdt='cd $WSTH'
+alias cdcu='cd $WSCQ'
+alias cdc='cd $WSCA'
+alias cdkk='cd $WSKOLCRAFT'
+alias cdra='cd $WSRAND'
+alias cdre='cd $WSREVLON'
+alias cdtt='cd $WSTTI'
+
 alias g="grails"
+alias go='export GRAILS_HOME=/opt/grails/old && /opt/grails/old/bin/grails'
 alias gca="grails clean"
 alias gda="mv dcs.war $CATALINA_HOME/webapps"
-alias gdevdb="grails dev create-db clean --non-interactive=y"
+alias gdevdb="grails  -DBMS=my dev create-db clean --non-interactive=y;grails -DBMS=my dev dbm-update"
+alias gpdevdb="grails -DBMS=ms dev create-db clean --non-interactive=y;grails -DBMS=ms dev dbm-update"
+alias gphistdb="grails -DBMS=ms -Dgrails.env=hist create-db clean --non-interactive=y;grails -DBMS=ms -Dgrails.env=hist dbm-update"
 alias gec='$EDITOR application.properties grails-app/conf/BuildConfig.groovy'
 alias gproddb="grails prod create-db clean --non-interactive=y"
+alias grac="gant clean;grails clean;grails compile;gant grailsDeploy;grails run-app"
+alias grap="grails compile;gant grailsDeploy;grails run-app"
 alias gra="grails run-app"
 alias grat="grails test run-app"
 alias graw="g clean;g compile; gant grailsDeploy; grails test run-war"
 alias grw="gant grailsDeploy; grails test run-war"
+alias gsc='echo "Removing .grails target, stacktrace.log and all the plugin.xml files";rm -rf .grails target stacktrace.log ../*/plugin.xml'
 alias gta="grails test-app"
-alias gtestdb="grails test create-db clean --non-interactive=y"
+alias gti="grails test-app --integration"
+alias gtestdb="grails  -DBMS=my test create-db clean --non-interactive=y;grails -DBMS=my test dbm-update"
+alias gptestdb="grails -DBMS=ms test create-db clean --non-interactive=y;grails -DBMS=ms test dbm-update"
 alias gwar='g2 clean;gant clean;rm web-app/lib/dcs.war;g2 compile;gant grailsDeploy;g2 war dcs92prod.war --non-interactive=y'
 alias gward='g2 clean;gant clean;rm web-app/lib/dcs.war;g2 compile;gant grailsDeploy;g2 dev war dcs92dev.war --non-interactive=y'
 alias gwart='g2 clean;gant clean;rm web-app/lib/dcs.war;g2 compile;gant grailsDeploy;g2 test war dcs92test.war --non-interactive=y'
+alias gddb="grails dev db-create clean --non-interactive=y"
+alias gpddb="grails -DBMS=ms dev db-create clean --non-interactive=y"
+alias gtdb="grails test db-create clean --non-interactive=y"
+alias gptdb="grails -DBMS=ms test db-create clean --non-interactive=y"
+
+alias mar='mate $AR_HOME/ar.tmproj'
+alias mdb='mate $DATABASE_HOME/database.tmproj'
+alias mdc='mate $DCS_HOME/dcs.tmproj'
+alias mgb='mate $GREENBILL_HOME/greenbill.tmproj'
+alias mpg='mate $PAYGATE_HOME/payment-gateway.tmproj'
+alias mqb='mate $QUICKBOOKS_HOME/quickbooks.tmproj'
+alias mra='mate $RALLY_HOME/rally.tmproj'
+alias msp='mate $SPARKLE_HOME/sparkle.tmproj'
+alias matec='mate *.*.tmproj'
+alias matey='mate *~*.tmproj'
+alias matex='mate *_*.tmproj'
+
 alias si='svn info'
 alias ss='svn status'
+alias sss='svn update;svn status'
 alias sd='svn diff'
 alias sl='svn log -l 10'
+alias st='/Applications/Sublime\ Text\ 2.app/Contents/MacOS/Sublime\ Text\ 2'
 alias sup='/opt/subversion/bin/svn up'
 alias tcq='$CATALINA_HOME/bin/shutdown.sh'
-alias tcr='rm -rf $CATALINA_HOME/temp/* $CATALINA_HOME/work/* $CATALINA_HOME/webapps/dcs* $CATALINA_HOME/logs/*;$CATALINA_HOME/bin/startup.sh;tail -n 1000 -F $CATALINA_HOME/logs/catalina.out'
+alias tcr='rm -rf $CATALINA_HOME/temp/* $CATALINA_HOME/work/* $CATALINA_HOME/logs/*;$CATALINA_HOME/bin/startup.sh;tail -n 1000 -F $CATALINA_HOME/logs/catalina.out'
 #alias rmsvn='rm -rf `find . -type d -name .svn`'
+alias xnc='Xnest -query 192.168.1.100 -geometry 1920x1020'
 
+
+# Stuff that will go away as soon as we upgrade DCS to the latest libraries.
+alias gsce='mv -f grails-app/conf/SecurityConfig.9ci grails-app/conf/SecurityConfig.groovy'
+alias gscd='mv -f grails-app/conf/SecurityConfig.groovy grails-app/conf/SecurityConfig.9ci'
 
 
 #function switchGrails() {

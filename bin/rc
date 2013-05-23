@@ -1,0 +1,5 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Searches for any files containing the parameter, and edits them.
+# Ignores .svn and any directory named build.
+find . -type f -print | sed 's/..*/"&"/' | egrep -v '(\.svn\>|\<build\>)' | xargs egrep -l "$1"

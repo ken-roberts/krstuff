@@ -5,7 +5,7 @@
 APP=`pwd | sed 's/..*\///'`
 #echo $APP
 
-PLUG="$HOME/.grails/1.3.4/projects/$APP/plugins/$1*"
+PLUG=".grails/projects/$APP/plugins/$1*"
 echo "Removing $PLUG"
 
 rm -r $PLUG
