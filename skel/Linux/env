@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Set up environment specific to this system.
+# Values here override things in the default krstuff config, so this can be sparse.
+
+GRAILS_OPTS='-Xmx1024M -XX:MaxPermSize=384M'
+JAVA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
+CATALINA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
+
+# KR_PATH is set up in KRSTUFF as the prefix for everything else.
+
+if [[ `id -u` = 0 ]]; then
+	# root user, take things into account.
+	SYSPATH='/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/X11/bin'
+	PATH=$KR_PATH:$SYSPATH
+else
+	SYSPATH='/bin:/usr/bin:/usr/local/bin:/usr/X11/bin'
+	PATH="$KR_PATH:$ANT_HOME/bin:$ARTIFACTORY_HOME/bin:$GANT_HOME/bin:$GRAILS_HOME/bin:$MULTIMARKDOWN_HOME/bin:$MYSQL_HOME/bin:$NODE_HOME:$PHANTOMJS_HOME/bin:$SYSPATH"
+fi
+
+KRSTUFF_LOCAL_ENV_EXPORTS="PATH SYSPATH GRAILS_OPTS JAVA_OPTS CATALINA_OPTS GANT_HOME"
+export $KRSTUFF_LOCAL_ENV_EXPORTS KRSTUFF_LOCAL_ENV_EXPORTS
+

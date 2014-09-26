@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "KRSTUFF: Reading local aliases"
+
+alias ps='/bin/ps ax'
+alias psg='/bin/ps ax | grep'
+alias start_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM start"
+alias stop_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM stop"alias antn='ant -f build9ci.xml'
+alias vmr='sudo launchctl start com.parallels.desktop.launchdaemon'
+alias vms='sudo launchctl stop com.parallels.desktop.launchdaemon'
+

@@ -1,0 +1,20 @@
+#!/bin/bash
+echo "KRSTUFF: Reading local profile"
+
+# This is the first file in KRSTUFF.  It needs to be non-versioned so it can be modified to the system.
+
+export KRSTUFF_HOME=/usr/local/krstuff
+
+# First suck in standard defaults
+[[ -s "$KRSTUFF_HOME/etc/profile" ]] && source "$KRSTUFF_HOME/etc/profile"
+
+# Now suck in local stuff.
+[[ -s "/etc/krstuff/env"          ]] && source "/etc/krstuff/env"
+[[ -s "/etc/krstuff/aliases"      ]] && source "/etc/krstuff/aliases"
+
+# DON'T suck in /etc/krstuff/homes!  This is going to be pulled from $KRSTUFF_HOME for sequencing reasons.
+
+#echo "KRSTUFF_LOCAL_ENV_EXPORTS: $KRSTUFF_LOCAL_ENV_EXPORTS"
+
+#export $KRSTUFF_LOCAL_ENV_EXPORTS KRSTUFF_LOCAL_ENV_EXPORTS
+

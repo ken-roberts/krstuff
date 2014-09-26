@@ -1,81 +1,85 @@
 #!/bin/bash
-# These are aliases I find handy.
+# Aliases I want on every system.
 
-# The variables defined here are pretty much specific to the aliases defined here, but could be used elsewhere as well.
+function make_and_change_dir {
+	/bin/mkdir -p "$1"
+	cd "$1"
+}
+alias mcd=make_and_change_dir
 
 # WS92 and WS93 are workspace directories for our two major projects.
 # The way it's set up, you can just change these to variables to whatever you want, and the aliases will follow
 # along just fine.
-export WS913="$HOME/ws/913"
-export WS92="$HOME/ws/92"
-export WS93="$HOME/ws/93"
-export WS94="$HOME/ws/94"
-export WS95="$HOME/ws/95"
-export WST="$HOME/ws/trunk"
-export WSTH="$WST/head"
-export WSCQ="$WS94/carquestusa"
-export WSCA="$WS95/cqca"
-export WSKOLCRAFT="$WS93/kolcraft"
-export WSRAND="$WS92/rand"
-export WSREVLON="$WS913/revlon"
-export WSTTI="$WS95/tti"
+WORKSPACE=$HOME/ws
+export WS95="$WORKSPACE/95"
+export WS95="$WORKSPACE/96"
+export WS95="$WORKSPACE/97"
+export WS95="$WORKSPACE/98"
+export WSTH="$WORKSPACE/trunk/head"
 
 
 # System-specific aliases
 alias c='clear'
 alias bb="$BROWSER"
-alias df='df -m'
-alias err='open  target/test-reports/html/index.html'
+alias df='df -h'
+alias err='open target/test-reports/html/index.html'
 alias ll='ls -alhG'
-alias ps='/bin/ps ax'
-alias psj='/bin/ps ax | grep java'
-alias psg='/bin/ps ax | grep'
+alias ps='/bin/ps axf'
+alias psj='/bin/ps axf | grep java'
+alias psg='/bin/ps axf | grep'
 alias rdesktop='/usr/bin/rdesktop -a 16 -g 1024x768 -r disk:home=/home/ken'
 alias rdp='/usr/bin/rdesktop -a 16 -g 1908x1000 -r disk:home=/home/ken'
-alias start_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM start"
-alias stop_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM stop"alias antn='ant -f build9ci.xml'
+
+# Git related aliases
+alias gittagdate='git log --tags --simplify-by-decoration --pretty="format:%ci %d"'
+alias gittagseq='git log --tags --oneline --decorate --simplify-by-decoration'
+alias glog='git log -n 10'
+alias gprl='git pull --rebase --log'
+alias slog='svn log | head -n 50'
+
 
 # Grails development related aliases.
-alias cd1='cd $WS913'
-alias cd2='cd $WS92'
-alias cd3='cd $WS93'
-alias cd4='cd $WS94'
 alias cd5='cd $WS95'
+alias cd5='cd $WS96'
+alias cd5='cd $WS97'
+alias cd5='cd $WS98'
 alias cdt='cd $WSTH'
-alias cdcu='cd $WSCQ'
-alias cdc='cd $WSCA'
-alias cdkk='cd $WSKOLCRAFT'
-alias cdra='cd $WSRAND'
-alias cdre='cd $WSREVLON'
-alias cdtt='cd $WSTTI'
 
 alias g="grails"
-alias go='export GRAILS_HOME=/opt/grails/old && /opt/grails/old/bin/grails'
 alias gca="grails clean"
-alias gda="mv dcs.war $CATALINA_HOME/webapps"
-alias gdevdb="grails  -DBMS=my dev create-db clean --non-interactive=y;grails -DBMS=my dev dbm-update"
-alias gpdevdb="grails -DBMS=ms dev create-db clean --non-interactive=y;grails -DBMS=ms dev dbm-update"
-alias gphistdb="grails -DBMS=ms -Dgrails.env=hist create-db clean --non-interactive=y;grails -DBMS=ms -Dgrails.env=hist dbm-update"
+alias gc="grails compile"
+alias gc3="echo 'grails compile 3 times...';g compile;echo 'grails compile 2 more times...';g compile;'grails compile 1 more time...';g compile"
+alias gsc='echo "SUPERCLEAN Removing .grails target, stacktrace.log and all the plugin.xml files";rm -rf .grails target stacktrace.log ../*/plugin.xml'
+alias gssc='echo "SUPERSUPERCLEAN .grails target, stacktrace.log, all the plugin.xml files, ivy2 and grails tmp directories";rm -rf .grails target stacktrace.log ../*/plugin.xml ~/.ivy2 ~/.grails/ivy-cache ~/.grails/2.*/'
+alias gzp="rm -rf .grails/plugins/*"
+alias gzp9="rm -rf .grails/plugins/angle-grinder-* .grails/plugins/rally-* .grails/plugins/ar-* .grails/plugins/autocash-* .grails/plugins/nine-history-* .grails/plugins/payment-gateway-*"
+
+
+
 alias gec='$EDITOR application.properties grails-app/conf/BuildConfig.groovy'
-alias gproddb="grails prod create-db clean --non-interactive=y"
-alias grac="gant clean;grails clean;grails compile;gant grailsDeploy;grails run-app"
 alias grap="grails compile;gant grailsDeploy;grails run-app"
 alias gra="grails run-app"
 alias grat="grails test run-app"
 alias graw="g clean;g compile; gant grailsDeploy; grails test run-war"
 alias grw="gant grailsDeploy; grails test run-war"
-alias gsc='echo "Removing .grails target, stacktrace.log and all the plugin.xml files";rm -rf .grails target stacktrace.log ../*/plugin.xml'
 alias gta="grails test-app"
 alias gti="grails test-app --integration"
+
+# grails database targets for older databases
+alias gdevdb="grails  -DBMS=my dev create-db clean --non-interactive=y;grails -DBMS=my dev dbm-update"
+alias gpdevdb="grails -DBMS=ms dev create-db clean --non-interactive=y;grails -DBMS=ms dev dbm-update"
+alias gphistdb="grails -DBMS=ms -Dgrails.env=hist create-db clean --non-interactive=y;grails -DBMS=ms -Dgrails.env=hist dbm-update"
 alias gtestdb="grails  -DBMS=my test create-db clean --non-interactive=y;grails -DBMS=my test dbm-update"
 alias gptestdb="grails -DBMS=ms test create-db clean --non-interactive=y;grails -DBMS=ms test dbm-update"
-alias gwar='g2 clean;gant clean;rm web-app/lib/dcs.war;g2 compile;gant grailsDeploy;g2 war dcs92prod.war --non-interactive=y'
-alias gward='g2 clean;gant clean;rm web-app/lib/dcs.war;g2 compile;gant grailsDeploy;g2 dev war dcs92dev.war --non-interactive=y'
-alias gwart='g2 clean;gant clean;rm web-app/lib/dcs.war;g2 compile;gant grailsDeploy;g2 test war dcs92test.war --non-interactive=y'
-alias gddb="grails dev db-create clean --non-interactive=y"
-alias gpddb="grails -DBMS=ms dev db-create clean --non-interactive=y"
-alias gtdb="grails test db-create clean --non-interactive=y"
-alias gptdb="grails -DBMS=ms test db-create clean --non-interactive=y"
+alias gproddb="grails prod create-db clean --non-interactive=y"
+
+# grails database targets for newer databases.
+alias gtdb="grails  -DBMS=my test db-create"
+alias gddb="grails  -DBMS=my dev db-create"
+alias ghdb='grails  -DBMS=my -Dgrails.env=hist db-create'
+alias gpddb="grails -DBMS=ms dev db-create"
+alias gphdb='grails -DBMS=ms -Dgrails.env=hist db-create'
+alias gptdb="grails -DBMS=ms test db-create"
 
 alias mar='mate $AR_HOME/ar.tmproj'
 alias mdb='mate $DATABASE_HOME/database.tmproj'

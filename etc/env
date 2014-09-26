@@ -1,41 +1,45 @@
 #!/bin/bash
 # Ken Roberts 2010-11-02
-# This is a Mac OS-based developer configuration contains standard UNIX variables I use which augment the way
-# command-line scripts, compiled commands and some GUI apps behave.  These variables are POSIX standard variables
-# which have the same meaning across nearly any UNIX or UN*X.
+# modified    2014-09-25
 
-# Make DOCUMENTATION be a common directory to search for javadocs.  You can use symbolic links in the
-# directory to get to other standard locations.  Some of the commands will search all javadocs in this
-# directory for classes, and open them in $BROWSER.
-DOCUMENTATION=$HOME/javadocs
 
-# BROWSER is which web browser to open.
-export BROWSER='firefox'
-
-# EDITOR is the text editor you want to use by default.  This could also be 'mate'.
-export EDITOR='vim'
-#export EDITOR='mate -w'
-
-# ENV is the file which defines your personal environment.  Should not change unless you know what you're doing.
-export ENV='$HOME/.bash_profile'
-
-# set -o physical causes your printed working directory to always reflect the true path, even if you changed there
-# through a symbolic link.  If you don't want this, comment it out.
 set -o physical
 
-# PS1 is your command line prompt.  This one gives you a two-line prompt in color (the octal numbers represent colors)
-# with 'user&host /current/working/directory' on the first line, and a symbol on the second which is # for root
-# and $ for a regular user.
-PS1='\[\033[01;32m\]\u\[\033[01;31m\]@\h\[\033[01;34m\] $PWD
+# If it's root user sometimes the system profile unsets things.
+if [[ `id -u` -eq 0 ]]; then
+	ENV='/root/.profile'
+	if [ -z $USER ]; then
+		USER='root'
+	fi;
+	if [ -z $LOGNAME ]; then
+		LOGNAME='root'
+	fi;
+else
+	ENV="$HOME/.bash_profile"
+fi;
+export USER LOGNAME
+
+# Set up the prompt.
+if [ `id -u` -eq 0 ]; then
+	PS1='\[\033[01;05m\]\u\[\033[00m\]\[\033[01;31m\]@\h\[\033[01;34m\] $PWD
 \$\[\033[00m\] '
+elif [ $LOGNAME = $USER ]; then
+	PS1='\[\033[01;32m\]\u\[\033[01;31m\]@\h\[\033[01;34m\] $PWD
+\$\[\033[00m\] '
+else
+	PS1='\[\033[01;35m\]\u\[\033[01;31m\]@\h\[\033[01;34m\] $PWD
+%\[\033[00m\] '
+fi
+export PS1
 
-# PS1 alternative: ``username@hostname:/directory $ ''
-#PS1="[\u@\h:\w] "
+BROWSER='firefox'
+CATALINA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
+CDPATH='.:..'
+CLASSPATH='../9ci-app/conf'
+EDITOR='vim'
+GRAILS_OPTS='-Xmx1024M -XX:MaxPermSize=384M'
+HISTTIMEFORMAT="%Z %Y-%m-%d %H:%M:%S"
+JAVA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
 
-# PS1 super-simple alternative way to calculate things, but this example is irrelevant because \$ does exactly this.
-#case `id -u` in
-#      0) PS1="${PS1}# ";;
-#      *) PS1="${PS1}$ ";;
-#esac
+export BROWSER CATALINA_OPTS CDPATH CLASSPATH EDITOR ENV GRAILS_OPTS HISTTIMEFORMAT JAVA_OPTS
 
-export CDPATH='.:..'

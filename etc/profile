@@ -1,34 +1,22 @@
-#!/bin/bash
+#!bin/bash
 # Ken Roberts 2010-11-02
-# This is a Mac OS-based developer configuration for grails and a few other things I use.
 
-if [ -n KRSTUFF_HOME ]; then
-	#echo "Didn't find KRSTUFF_HOME.  Setting it on my own."
-	KRSTUFF_HOME=$HOME/krstuff
-fi
-#echo "KRSTUFF_HOME is at $KRSTUFF_HOME"
+# Read in standard homes
+[[ -s "$KRSTUFF_HOME/etc/homes"    ]] && source "$KRSTUFF_HOME/etc/homes"
 
-# Put the following bit in your .bash_profile, this is the path to THIS FILE so don't uncomment it here or you will get
-# an infinite loop until memory runs out:
-#if [ -f $HOME/krstuff/etc/profile ];then
-#	. $HOME/krstuff/etc/profile
-#fi
+# Read in local homes
+[[ -s "/etc/krstuff/homes"         ]] && source "/etc/krstuff/homes"
 
-# Alternately, if you only like some of what I have going on but want to make your own for other things, you can just
-# duplicate parts of it as you like.  Be sure to include them in the order below, and be sure that KRSTUFF_HOME is defined if
-# you don't take the rest of the env file.
-
-if [ -f $KRSTUFF_HOME/etc/env ]; then
-	. $KRSTUFF_HOME/etc/env
+if [ `id -u` = 0 ]; then
+	# This is root user, don't take '.' in path.
+        KR_PATH="$HOME/bin:$KRSTUFF_HOME/bin"
+else
+	# This is a normal user, '.' is OK.
+        KR_PATH=".:$HOME/bin:$KRSTUFF_HOME/bin"
 fi
 
-if [ -f $KRSTUFF_HOME/etc/homes ]; then
-	. $KRSTUFF_HOME/etc/homes
-fi
-
-if [ -f $KRSTUFF_HOME/etc/aliases ]; then
-	. $KRSTUFF_HOME/etc/aliases
-fi
+[[ -s "$KRSTUFF_HOME/etc/env"      ]] && source "$KRSTUFF_HOME/etc/env"
+[[ -s "$KRSTUFF_HOME/etc/aliases"  ]] && source "$KRSTUFF_HOME/etc/aliases"
 
 # Pull in the mac-standard development tools.  You should be doing this in .bash_profile, but do it AFTER the things in krstuff.
 #if [ -f /opt/local/etc/bash_completion ]; then
