@@ -23,4 +23,5 @@ fi
 #    . /opt/local/etc/bash_completion
 #fi
 
-
+[[ -s "$KRSTUFF_LOCAL_ETC/env"     ]] && source "$KRSTUFF_LOCAL_ETC/env"
+[[ -s "$KRSTUFF_LOCAL_ETC/aliases" ]] && source "$KRSTUFF_LOCAL_ETC/aliases"
