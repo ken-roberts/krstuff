@@ -5,8 +5,6 @@ echo "KRSTUFF: Reading local homes"
 # Values here override things in the default krstuff config, so this can be sparse.
 # This is a callback from standard krstuff.
 
-export KRSTUFF_HOME=/usr/local/krstuff
-
 export ANT_HOME=/opt/ant/current
 export ARTIFACTORY_HOME=/opt/artifactory/current
 export CLASSPATH=../9ci-app-conf
