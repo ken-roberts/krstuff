@@ -10,8 +10,8 @@ Installing:
 6. Edit /etc/krstuff/profile so KRSTUFF_HOME reflects the location of the KRSTUFF directory in step 3.
 7. Add the next snippet to your .bash_profile, near the top:
 
-> # Pull in krstuff profile
-> [[ -s "/etc/krstuff/profile" ]] && source "/etc/krstuff/profile"
+    # Pull in krstuff profile
+    [[ -s "/etc/krstuff/profile" ]] && source "/etc/krstuff/profile"
 
 This sets things up for all users who source the file the same way.
 
