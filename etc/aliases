@@ -33,7 +33,7 @@ alias rdp='/usr/bin/rdesktop -a 16 -g 1908x1000 -r disk:home=/home/ken'
 # Git related aliases
 alias gittagdate='git log --tags --simplify-by-decoration --pretty="format:%ci %d"'
 alias gittagseq='git log --tags --oneline --decorate --simplify-by-decoration'
-alias glog='git log -n 10'
+alias glog='git log -n 8'
 alias gprl='git pull --rebase --log'
 alias slog='svn log | head -n 50'
 

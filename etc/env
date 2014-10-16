@@ -36,7 +36,7 @@ export PS1
 BROWSER='firefox'
 CATALINA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
 CDPATH='.:..'
-CLASSPATH='../9ci-app/conf'
+CLASSPATH='../9ci-app-conf'
 EDITOR='vim'
 GRAILS_OPTS='-Xmx1024M -XX:MaxPermSize=384M'
 HISTTIMEFORMAT="%Z %Y-%m-%d %H:%M:%S"
