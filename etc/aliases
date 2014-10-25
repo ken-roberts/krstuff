@@ -23,7 +23,11 @@ alias c='clear'
 alias bb="$BROWSER"
 alias df='df -h'
 alias err='open target/test-reports/html/index.html'
-alias ll='ls -alhG'
+if [ `uname -s` = 'Darwin' ]; then
+	alias ll='ls -alhG'
+elif [ `uname -s` = 'Linux' ]; then
+	alias ll='ls -alh'
+fi
 alias ps='/bin/ps axf'
 alias psj='/bin/ps axf | grep java'
 alias psg='/bin/ps axf | grep'
