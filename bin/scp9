@@ -1,0 +1,2 @@
+
+scp -o ProxyCommand="ssh -p 5024 ftp.9ci.com nc $1" $2 $3
