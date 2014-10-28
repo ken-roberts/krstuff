@@ -6,25 +6,25 @@
 set -o physical
 
 # If it's root user sometimes the system profile unsets things.
-if [[ `id -u` -eq 0 ]]; then
+if [[ "`id -u`" = "0" ]]; then
 	ENV='/root/.profile'
-	if [ -z $USER ]; then
+	if [ -z "$USER" ]; then
 		USER='root'
 	fi;
-	if [ -z $LOGNAME ]; then
+	if [ -z "$LOGNAME" ]; then
 		LOGNAME='root'
 	fi;
 else
 	ENV="$HOME/.bash_profile"
-	LOGNAME=`who -m | sed 's/ .*//'`
+	LOGNAME="`who -m | sed 's/ .*//'`"
 fi;
 export USER LOGNAME
 
 # Set up the prompt.
-if [ `id -u` -eq 0 ]; then
+if [ "`id -u`" = "0" ]; then
 	PS1='\[\033[01;05m\]\u\[\033[00m\]\[\033[01;31m\]@\h\[\033[01;34m\] $PWD
 \$\[\033[00m\] '
-elif [ $LOGNAME = $USER ]; then
+elif [ "$LOGNAME" = "$USER" ]; then
 	PS1='\[\033[01;32m\]\u\[\033[01;31m\]@\h\[\033[01;34m\] $PWD
 \$\[\033[00m\] '
 else

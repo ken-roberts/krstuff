@@ -1,1 +1,1 @@
-tmux -f $KRSTUFF_LOCAL_ETC/tmuxes.conf
+TERM=xterm-256color tmux -f $KRSTUFF_LOCAL_ETC/tmuxes.conf

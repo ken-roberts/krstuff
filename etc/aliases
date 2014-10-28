@@ -23,9 +23,11 @@ alias c='clear'
 alias bb="$BROWSER"
 alias df='df -h'
 alias err='open target/test-reports/html/index.html'
-if [ `uname -s` = 'Darwin' ]; then
+
+UNAME="`uname -s`"
+if [ "$UNAME" = 'Darwin' ]; then
 	alias ll='ls -alhG'
-elif [ `uname -s` = 'Linux' ]; then
+elif [ "$UNAME" = 'Linux' ]; then
 	alias ll='ls -alh'
 fi
 alias ps='/bin/ps axf'
@@ -40,7 +42,6 @@ alias gittagseq='git log --tags --oneline --decorate --simplify-by-decoration'
 alias glog='git log -n 8'
 alias gprl='git pull --rebase --log'
 alias slog='svn log | head -n 50'
-
 
 # Grails development related aliases.
 alias cd5='cd $WS95'
