@@ -1,0 +1,22 @@
+
+function special_find {
+	find . -type f \
+	-not \( -path "./.git" -prune \) \
+	-not \( -path "./.grails" -prune \) \
+	-not \( -path "./target" -prune \) \
+	-not \( -name "**.jar" \) \
+	-not \( -name "**.pack" \) \
+	-not \( -name "**.data" \) \
+	-not \( -name "**.class" \) \
+	-not \( -name "**.png" \) \
+	-not \( -name "**.gif" \) \
+	-not \( -name "**.war" \) \
+	-print0
+}
+
+echo "XXX:   `special_find | xargs -0 grep '\<XXX\>' | wc -l`"
+echo "QQQ:   `special_find | xargs -0 grep '\<QQQ\>' | wc -l`"
+echo "FIXME: `special_find | xargs -0 grep '\<FIXME\>' | wc -l`"
+echo "TODO:  `special_find | xargs -0 grep '\<TODO\>' | wc -l`"
+echo "WTF:   `special_find | xargs -0 grep '\<WTF\>' | wc -l`"
+
