@@ -18,7 +18,7 @@ if [ ! -d 'target' ]; then
 	mkdir target
 fi
 
-OUT="target/project_statistics"
+OUT="target/project_statistics.txt"
 
 rm -f $OUT
 
