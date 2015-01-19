@@ -14,13 +14,17 @@ function special_find {
 	-print0
 }
 
-mkdir target
+if [ ! -d 'target' ]; then
+	mkdir target
+fi
 
 OUT="target/project_statistics"
 
-echo "XXX:   `special_find | xargs -0 grep '\<XXX\>'   | wc -l`" >  $OUT
-echo "QQQ:   `special_find | xargs -0 grep '\<QQQ\>'   | wc -l`" >> $OUT
-echo "FIXME: `special_find | xargs -0 grep '\<FIXME\>' | wc -l`" >> $OUT
-echo "TODO:  `special_find | xargs -0 grep '\<TODO\>'  | wc -l`" >> $OUT
-echo "WTF:   `special_find | xargs -0 grep '\<WTF\>'   | wc -l`" >> $OUT
+rm -f $OUT
+
+echo "XXX:   `special_find | xargs -0 grep '\<XXX\>'   | grep -v 'Binary file..*matches' | wc -l`" >  $OUT
+echo "QQQ:   `special_find | xargs -0 grep '\<QQQ\>'   | grep -v 'Binary file..*matches' | wc -l`" >> $OUT
+echo "FIXME: `special_find | xargs -0 grep '\<FIXME\>' | grep -v 'Binary file..*matches' | wc -l`" >> $OUT
+echo "TODO:  `special_find | xargs -0 grep '\<TODO\>'  | grep -v 'Binary file..*matches' | wc -l`" >> $OUT
+echo "WTF:   `special_find | xargs -0 grep '\<WTF\>'   | grep -v 'Binary file..*matches' | wc -l`" >> $OUT
 
