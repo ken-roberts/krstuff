@@ -1,6 +1,8 @@
 
+# Find command tuned to a grails project.
+# Putting .git and .grails and target in here is not bulletproof, but adding them here saves about a minute of execution time.
 function special_find {
-	find . -type f \
+	find -s . -type f \
 	-not \( -path "./.git" -prune \) \
 	-not \( -path "./.grails" -prune \) \
 	-not \( -path "./target" -prune \) \
@@ -14,6 +16,13 @@ function special_find {
 	-print0
 }
 
+# This is a wrapper around the find command.
+# The .git and .grails and target directories clean up the places where leaks have been getting through.
+function pipes {
+	special_find | xargs -0 grep "\<$1\>" \
+	| egrep -v '^(\.\/\.git\/..*|\.\/\.grails\/..*|\.\/target\/..*|Binary file..*matches)$'
+}
+
 if [ ! -d 'target' ]; then
 	mkdir target
 fi
@@ -22,9 +31,33 @@ OUT="target/project_statistics.txt"
 
 rm -f $OUT
 
-echo "XXX:   `special_find | xargs -0 grep '\<XXX\>'   | grep -v 'Binary file..*matches' | wc -l`" >  $OUT
-echo "QQQ:   `special_find | xargs -0 grep '\<QQQ\>'   | grep -v 'Binary file..*matches' | wc -l`" >> $OUT
-echo "FIXME: `special_find | xargs -0 grep '\<FIXME\>' | grep -v 'Binary file..*matches' | wc -l`" >> $OUT
-echo "TODO:  `special_find | xargs -0 grep '\<TODO\>'  | grep -v 'Binary file..*matches' | wc -l`" >> $OUT
-echo "WTF:   `special_find | xargs -0 grep '\<WTF\>'   | grep -v 'Binary file..*matches' | wc -l`" >> $OUT
-
+echo "XXX:   `pipes 'XXX'   | wc -l`" | tee $OUT
+echo "QQQ:   `pipes 'QQQ'   | wc -l`" | tee -a $OUT
+echo "FIXME: `pipes 'FIXME' | wc -l`" | tee -a $OUT
+echo "TODO:  `pipes 'TODO'  | wc -l`" | tee -a $OUT
+echo "WTF:   `pipes 'WTF'   | wc -l`" | tee -a $OUT
+echo
+echo
+echo
+echo "XXX detail: _______________________________________________________________________" | tee -a $OUT
+pipes 'XXX' | tee -a $OUT
+echo
+echo
+echo
+echo "QQQ detail: _______________________________________________________________________" | tee -a $OUT
+pipes 'QQQ' | tee -a $OUT
+echo
+echo
+echo
+echo "FIXME detail: _____________________________________________________________________" | tee -a $OUT
+pipes 'FIXME' | tee -a $OUT
+echo
+echo
+echo
+echo "TODO detail: ______________________________________________________________________" | tee -a $OUT
+pipes 'TODO' | tee -a $OUT
+echo
+echo
+echo
+echo "WTF detail: _______________________________________________________________________" | tee -a $OUT
+pipes 'WTF' | tee -a $OUT
