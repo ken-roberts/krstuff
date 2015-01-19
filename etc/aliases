@@ -50,7 +50,7 @@ alias cd5='cd $WS97'
 alias cd5='cd $WS98'
 alias cdt='cd $WSTH'
 
-alias g="grails"
+alias g="grails --stacktrace --verbose"
 alias gca="grails clean"
 alias gc="grails compile"
 alias gc3="echo 'grails compile 3 times...';g compile;echo 'grails compile 2 more times...';g compile;'grails compile 1 more time...';g compile"
@@ -63,11 +63,11 @@ alias gzp9="rm -rf .grails/plugins/angle-grinder-* .grails/plugins/rally-* .grai
 
 alias gec='$EDITOR application.properties grails-app/conf/BuildConfig.groovy'
 alias grap="grails compile;gant grailsDeploy;grails run-app"
-alias gra="grails run-app"
-alias grat="grails test run-app"
+alias gra="grails run-app --stacktrace --verbose"
+alias grat="grails test run-app --stacktrace --verbose"
 alias graw="g clean;g compile; gant grailsDeploy; grails test run-war"
-alias grw="gant grailsDeploy; grails test run-war"
-alias gta="grails test-app"
+alias grw="grails test run-war --stacktrace --verbose"
+alias gta="grails test-app --stacktrace --verbose"
 alias gti="grails test-app --integration"
 
 # grails database targets for older databases
