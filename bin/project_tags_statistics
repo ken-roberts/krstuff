@@ -27,37 +27,42 @@ if [ ! -d 'target' ]; then
 	mkdir target
 fi
 
+LINE='<p>'
+
 OUT="target/project_statistics.txt"
 
 rm -f $OUT
+
+echo "Writing statistics to $OUT"
+touch $OUT
 
 echo "XXX:   `pipes 'XXX'   | wc -l`" | tee $OUT
 echo "QQQ:   `pipes 'QQQ'   | wc -l`" | tee -a $OUT
 echo "FIXME: `pipes 'FIXME' | wc -l`" | tee -a $OUT
 echo "TODO:  `pipes 'TODO'  | wc -l`" | tee -a $OUT
 echo "WTF:   `pipes 'WTF'   | wc -l`" | tee -a $OUT
-echo
-echo
-echo
+echo "$LINE"
+echo "$LINE"
+echo "$LINE"
 echo "XXX detail: _______________________________________________________________________" | tee -a $OUT
 pipes 'XXX' | tee -a $OUT
-echo
-echo
-echo
+echo "$LINE"
+echo "$LINE"
+echo "$LINE"
 echo "QQQ detail: _______________________________________________________________________" | tee -a $OUT
 pipes 'QQQ' | tee -a $OUT
-echo
-echo
-echo
+echo "$LINE"
+echo "$LINE"
+echo "$LINE"
 echo "FIXME detail: _____________________________________________________________________" | tee -a $OUT
 pipes 'FIXME' | tee -a $OUT
-echo
-echo
-echo
+echo "$LINE"
+echo "$LINE"
+echo "$LINE"
 echo "TODO detail: ______________________________________________________________________" | tee -a $OUT
 pipes 'TODO' | tee -a $OUT
-echo
-echo
-echo
+echo "$LINE"
+echo "$LINE"
+echo "$LINE"
 echo "WTF detail: _______________________________________________________________________" | tee -a $OUT
 pipes 'WTF' | tee -a $OUT
