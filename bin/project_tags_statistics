@@ -2,7 +2,7 @@
 # Find command tuned to a grails project.
 # Putting .git and .grails and target in here is not bulletproof, but adding them here saves about a minute of execution time.
 function special_find {
-	find -s . -type f \
+	find . -type f \
 	-not \( -path "./.git" -prune \) \
 	-not \( -path "./.grails" -prune \) \
 	-not \( -path "./target" -prune \) \
