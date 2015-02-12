@@ -28,7 +28,7 @@ UNAME="`uname -s`"
 if [ "$UNAME" = 'Darwin' ]; then
 	alias ll='ls -alhG'
 elif [ "$UNAME" = 'Linux' ]; then
-	alias ll='ls -alh'
+	alias ll='ls --color -alh'
 fi
 alias ps='/bin/ps axf'
 alias psj='/bin/ps axf | grep java'
