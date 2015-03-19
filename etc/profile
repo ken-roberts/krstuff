@@ -5,7 +5,7 @@
 [[ -s "$KRSTUFF_HOME/etc/homes"    ]] && source "$KRSTUFF_HOME/etc/homes"
 
 # Read in local homes
-[[ -s "/etc/krstuff/homes"         ]] && source "/etc/krstuff/homes"
+[[ -s "$KRSTUFF_LOCAL_ETC/homes"   ]] && source "$KRSTUFF_LOCAL_ETC/homes"
 
 if [ `id -u` = 0 ]; then
 	# This is root user, don't take '.' in path.
