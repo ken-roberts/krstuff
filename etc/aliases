@@ -7,17 +7,6 @@ function make_and_change_dir {
 }
 alias mcd=make_and_change_dir
 
-# WS92 and WS93 are workspace directories for our two major projects.
-# The way it's set up, you can just change these to variables to whatever you want, and the aliases will follow
-# along just fine.
-WORKSPACE=$HOME/ws
-export WS95="$WORKSPACE/95"
-export WS95="$WORKSPACE/96"
-export WS95="$WORKSPACE/97"
-export WS95="$WORKSPACE/98"
-export WSTH="$WORKSPACE/trunk/head"
-
-
 # System-specific aliases
 alias c='clear'
 alias bb="$BROWSER"
@@ -42,33 +31,25 @@ alias gittagseq='git log --tags --oneline --decorate --simplify-by-decoration'
 alias glog='git log -n 8'
 alias gprl='git pull --rebase --log'
 alias slog='svn log | head -n 50'
+alias gco='git checkout'
 
 # Grails development related aliases.
-alias cd5='cd $WS95'
-alias cd5='cd $WS96'
-alias cd5='cd $WS97'
-alias cd5='cd $WS98'
-alias cdt='cd $WSTH'
+alias cdt='cd ~/ws/trunk/head'
 
-alias g="grails --stacktrace --verbose"
+GRAILS="grails --stacktrace --veryverbose"
+alias g=$GRAILS
 alias gca="grails clean"
-alias gc="grails compile"
-alias gc3="echo 'grails compile 3 times...';g compile;echo 'grails compile 2 more times...';g compile;'grails compile 1 more time...';g compile"
+alias gc="$GRAILS compile"
 alias gsc='echo "SUPERCLEAN Removing .grails target, stacktrace.log and all the plugin.xml files";rm -rf .grails target stacktrace.log ../*/plugin.xml'
 alias gssc='echo "SUPERSUPERCLEAN .grails target, stacktrace.log, all the plugin.xml files, ivy2 and grails tmp directories";rm -rf .grails target stacktrace.log ../*/plugin.xml ~/.ivy2 ~/.grails/ivy-cache ~/.grails/2.*/'
-alias gzp="rm -rf .grails/plugins/*"
-alias gzp9="rm -rf .grails/plugins/angle-grinder-* .grails/plugins/rally-* .grails/plugins/ar-* .grails/plugins/autocash-* .grails/plugins/nine-history-* .grails/plugins/payment-gateway-*"
 
 
 
 alias gec='$EDITOR application.properties grails-app/conf/BuildConfig.groovy'
-alias grap="grails compile;gant grailsDeploy;grails run-app"
-alias gra="grails run-app --stacktrace --verbose"
-alias grat="grails test run-app --stacktrace --verbose"
-alias graw="g clean;g compile; gant grailsDeploy; grails test run-war"
-alias grw="grails test run-war --stacktrace --verbose"
-alias gta="grails test-app --stacktrace --verbose"
-alias gti="grails test-app --integration"
+alias gra="$GRAILS -Ddisable.auto.recompile=false run-app"
+alias grat="$GRAILS test run-app"
+alias grw="$GRAILS run-war"
+alias gta="$GRAILS test-app"
 
 # grails database targets for older databases
 alias gdevdb="grails  -DBMS=my dev create-db clean --non-interactive=y;grails -DBMS=my dev dbm-update"
@@ -86,18 +67,6 @@ alias gpddb="grails -DBMS=ms dev db-create"
 alias gphdb='grails -DBMS=ms -Dgrails.env=hist db-create'
 alias gptdb="grails -DBMS=ms test db-create"
 
-alias mar='mate $AR_HOME/ar.tmproj'
-alias mdb='mate $DATABASE_HOME/database.tmproj'
-alias mdc='mate $DCS_HOME/dcs.tmproj'
-alias mgb='mate $GREENBILL_HOME/greenbill.tmproj'
-alias mpg='mate $PAYGATE_HOME/payment-gateway.tmproj'
-alias mqb='mate $QUICKBOOKS_HOME/quickbooks.tmproj'
-alias mra='mate $RALLY_HOME/rally.tmproj'
-alias msp='mate $SPARKLE_HOME/sparkle.tmproj'
-alias matec='mate *.*.tmproj'
-alias matey='mate *~*.tmproj'
-alias matex='mate *_*.tmproj'
-
 alias si='svn info'
 alias ss='svn status'
 alias sss='svn update;svn status'
@@ -110,19 +79,3 @@ alias tcr='rm -rf $CATALINA_HOME/temp/* $CATALINA_HOME/work/* $CATALINA_HOME/log
 #alias rmsvn='rm -rf `find . -type d -name .svn`'
 alias xnc='Xnest -query 192.168.1.100 -geometry 1920x1020'
 
-
-# Stuff that will go away as soon as we upgrade DCS to the latest libraries.
-alias gsce='mv -f grails-app/conf/SecurityConfig.9ci grails-app/conf/SecurityConfig.groovy'
-alias gscd='mv -f grails-app/conf/SecurityConfig.groovy grails-app/conf/SecurityConfig.9ci'
-
-
-#function switchGrails() {
-#    echo "Switching to grails version: $1"
-#    sudo rm /usr/local/{grails}
-#    sudo ln -s /usr/local/$1 /usr/local/grails
-#    echo "Done!"
-#    ls -latr /usr/local/{grails}
-#}
- 
-#alias g12='switchGrails "grails-1.2"'
-#alias g12m2='switchGrails "grails-1.2-M2"'
