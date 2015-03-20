@@ -34,6 +34,7 @@ alias gprl='git pull --rebase --log'
 alias slog='svn log | head -n 50'
 alias gco='git checkout'
 alias gba='git branch -a'
+alias gs='git status'
 
 # Grails development related aliases.
 alias cdt='cd ~/ws/trunk/head'
