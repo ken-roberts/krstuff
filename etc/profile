@@ -1,5 +1,6 @@
 #!bin/bash
 # Ken Roberts 2010-11-02
+[[ -n "$KRSTUFF_LOG" ]]	&& echo "Entering ${BASH_SOURCE[0]}"
 
 # Read in standard homes
 [[ -s "$KRSTUFF_HOME/etc/homes"    ]] && source "$KRSTUFF_HOME/etc/homes"
@@ -25,3 +26,5 @@ fi
 
 [[ -s "$KRSTUFF_LOCAL_ETC/env"     ]] && source "$KRSTUFF_LOCAL_ETC/env"
 [[ -s "$KRSTUFF_LOCAL_ETC/aliases" ]] && source "$KRSTUFF_LOCAL_ETC/aliases"
+
+[[ -n "$KRSTUFF_LOG" ]]	&& echo "Leaving ${BASH_SOURCE[0]}"

@@ -2,6 +2,7 @@
 # Ken Roberts 2010-11-02
 # modified    2014-09-25
 
+[[ -n "$KRSTUFF_LOG" ]]	&& echo "Entering ${BASH_SOURCE[0]}"
 
 set -o physical
 
@@ -44,3 +45,4 @@ JAVA_OPTS="-Xmx2048m -XX:MaxPermSize=512M"
 
 export BROWSER CATALINA_OPTS CDPATH CLASSPATH EDITOR ENV GRAILS_OPTS HISTTIMEFORMAT JAVA_OPTS
 
+[[ -n "$KRSTUFF_LOG" ]]	&& echo "Leaving ${BASH_SOURCE[0]}"

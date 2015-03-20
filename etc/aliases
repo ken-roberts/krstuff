@@ -1,5 +1,6 @@
 #!/bin/bash
 # Aliases I want on every system.
+[[ -n "$KRSTUFF_LOG" ]]	&& echo "Entering ${BASH_SOURCE[0]}"
 
 function make_and_change_dir {
 	/bin/mkdir -p "$1"
@@ -79,3 +80,4 @@ alias tcr='rm -rf $CATALINA_HOME/temp/* $CATALINA_HOME/work/* $CATALINA_HOME/log
 #alias rmsvn='rm -rf `find . -type d -name .svn`'
 alias xnc='Xnest -query 192.168.1.100 -geometry 1920x1020'
 
+[[ -n "$KRSTUFF_LOG" ]]	&& echo "Leaving ${BASH_SOURCE[0]}"
