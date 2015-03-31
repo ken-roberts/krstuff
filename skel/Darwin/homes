@@ -9,7 +9,7 @@ export KRSTUFF_HOME=/usr/local/krstuff
 
 export ANT_HOME=/opt/ant/current
 export ARTIFACTORY_HOME=/opt/artifactory/current
-export CLASSPATH=../9ci-app-conf
+export CLASSPATH='../rootLocation/conf'
 export GANT_HOME=/opt/gant/current
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home
 export MULTIMARKDOWN_HOME=/opt/multimarkdown/current
