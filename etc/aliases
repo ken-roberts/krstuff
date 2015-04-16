@@ -12,13 +12,14 @@ alias mcd=make_and_change_dir
 alias c='clear'
 alias bb="$BROWSER"
 alias df='df -h'
-alias err='open target/test-reports/html/index.html'
 
 UNAME="`uname -s`"
 if [ "$UNAME" = 'Darwin' ]; then
 	alias ll='ls -alhG'
+	alias err='open target/test-reports/html/index.html'
 elif [ "$UNAME" = 'Linux' ]; then
 	alias ll='ls --color -alh'
+	alias err='$BROWSER target/test-reports/html/index.html'
 fi
 alias ps='/bin/ps axf'
 alias psj='/bin/ps axf | grep java'
@@ -63,12 +64,12 @@ alias gptestdb="grails -DBMS=ms test create-db clean --non-interactive=y;grails 
 alias gproddb="grails prod create-db clean --non-interactive=y"
 
 # grails database targets for newer databases.
-alias gtdb="grails  -DBMS=my test db-create"
-alias gddb="grails  -DBMS=my dev db-create"
-alias ghdb='grails  -DBMS=my -Dgrails.env=hist db-create'
-alias gpddb="grails -DBMS=ms dev db-create"
-alias gphdb='grails -DBMS=ms -Dgrails.env=hist db-create'
-alias gptdb="grails -DBMS=ms test db-create"
+alias gtdb="grails  -DBMS=my test db-create --verbose --stacktrace"
+alias gddb="grails  -DBMS=my dev db-create --verbose --stacktrace"
+alias ghdb='grails  -DBMS=my -Dgrails.env=hist db-create --verbose --stacktrace'
+alias gpddb="grails -DBMS=ms dev db-create --verbose --stacktrace"
+alias gphdb='grails -DBMS=ms -Dgrails.env=hist db-create --verbose --stacktrace'
+alias gptdb="grails -DBMS=ms test db-create --verbose --stacktrace"
 
 alias si='svn info'
 alias ss='svn status'
