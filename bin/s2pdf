@@ -1,0 +1,1 @@
+echo "$1" | a2ps --landscape -1f100 -o $1.ps;ps2pdf $1.ps
