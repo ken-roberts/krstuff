@@ -13,7 +13,7 @@ if [ `id -u` = 0 ]; then
         KR_PATH="$HOME/bin:$KRSTUFF_HOME/bin"
 else
 	# This is a normal user, '.' is OK.
-        KR_PATH=".:$HOME/bin:$KRSTUFF_HOME/bin"
+        KR_PATH=".:$HOME/bin:$KRSTUFF_HOME/bin:$GVM_PATH"
 fi
 
 [[ -s "$KRSTUFF_HOME/etc/env"      ]] && source "$KRSTUFF_HOME/etc/env"

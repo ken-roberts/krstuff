@@ -42,7 +42,7 @@ alias gs='git status'
 # Grails development related aliases.
 alias cdt='cd ~/ws/master/head'
 
-GRAILS="grails --stacktrace --veryverbose"
+GRAILS="grails --stacktrace --verbose --veryverbose"
 alias g=$GRAILS
 alias gca="grails clean"
 alias gc="$GRAILS compile"
