@@ -40,7 +40,7 @@ alias gba='git branch -a'
 alias gs='git status'
 
 # Grails development related aliases.
-alias cdt='cd ~/ws/trunk/head'
+alias cdt='cd ~/ws/master/head'
 
 GRAILS="grails --stacktrace --veryverbose"
 alias g=$GRAILS
