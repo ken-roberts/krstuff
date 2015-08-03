@@ -24,8 +24,8 @@ fi
 alias ps='/bin/ps axf'
 alias psj='/bin/ps axf | grep java'
 alias psg='/bin/ps axf | grep'
-alias rdesktop='/usr/bin/rdesktop -a 16 -g 1024x768 -r disk:home=/home/ken'
-alias rdp='/usr/bin/rdesktop -a 16 -g 1908x1000 -r disk:home=/home/ken'
+alias rdesktop='/usr/bin/rdesktop -a 16 -g 1918x1020 -r disk:w=/home/ken/ws -r disk:v=/home/ken/Documents/Clients'
+alias rdp='/usr/bin/rdesktop -a 16 -g 1918x1020 -r disk:w=/home/ken/ws -r disk:v=/home/ken/Documents/Clients'
 
 # Git related aliases
 alias gittagdate='git log --tags --simplify-by-decoration --pretty="format:%ci %d"'
