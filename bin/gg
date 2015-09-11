@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# This script runs grails commands with options I always want, and then pipes the result into a file.
+
+mkdir -p target
+CMD="grails $@ --stacktrace --verbose --veryverbose 2>&1 | tee target/build.log"
+echo $CMD
+eval $CMD

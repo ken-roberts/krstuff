@@ -42,9 +42,10 @@ alias gs='git status'
 # Grails development related aliases.
 alias cdt='cd ~/ws/master/head'
 
-GRAILS="grails --stacktrace --verbose --veryverbose"
+GRAILS="gg"
+alias glbl='less target/build.log'
 alias g=$GRAILS
-alias gca="grails clean"
+alias gca="$GRAILS clean"
 alias gc="$GRAILS compile"
 alias gsc='echo "SUPERCLEAN Removing .grails target, stacktrace.log and all the plugin.xml files";rm -rf .grails target stacktrace.log ../*/plugin.xml'
 alias gssc='echo "SUPERSUPERCLEAN .grails target, stacktrace.log, all the plugin.xml files, ivy2 and grails tmp directories";rm -rf .grails target stacktrace.log ../*/plugin.xml ~/.ivy2 ~/.grails/ivy-cache ~/.grails/2.*/'
@@ -55,7 +56,7 @@ alias gec='$EDITOR application.properties grails-app/conf/BuildConfig.groovy'
 alias gra="$GRAILS -Ddisable.auto.recompile=false run-app"
 alias grat="$GRAILS test run-app"
 alias grw="$GRAILS run-war"
-alias gta="$GRAILS test-app"
+alias gta="$GRAILS test-app -echoOut"
 
 # grails database targets for older databases
 alias gdevdb="grails  -DBMS=my dev create-db clean --non-interactive=y;grails -DBMS=my dev dbm-update"
@@ -66,12 +67,12 @@ alias gptestdb="grails -DBMS=ms test create-db clean --non-interactive=y;grails 
 alias gproddb="grails prod create-db clean --non-interactive=y"
 
 # grails database targets for newer databases.
-alias gtdb="grails  -DBMS=my test db-create --verbose --stacktrace"
-alias gddb="grails  -DBMS=my dev db-create --verbose --stacktrace"
-alias ghdb='grails  -DBMS=my -Dgrails.env=hist db-create --verbose --stacktrace'
-alias gpddb="grails -DBMS=ms dev db-create --verbose --stacktrace"
-alias gphdb='grails -DBMS=ms -Dgrails.env=hist db-create --verbose --stacktrace'
-alias gptdb="grails -DBMS=ms test db-create --verbose --stacktrace"
+alias gtdb="$GRAILS  -DBMS=my test db-create"
+alias gddb="$GRAILS  -DBMS=my dev db-create"
+alias ghdb='$GRAILS  -DBMS=my -Dgrails.env=hist db-create'
+alias gpddb="$GRAILS -DBMS=ms dev db-create"
+alias gphdb='$GRAILS -DBMS=ms -Dgrails.env=hist db-create'
+alias gptdb="$GRAILS -DBMS=ms test db-create"
 
 alias si='svn info'
 alias ss='svn status'
