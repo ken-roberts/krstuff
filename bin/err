@@ -3,5 +3,5 @@
 # After running grails test-app, run this command to open all reports of failures or errors in your editor.
 # This is better than browsing the directory because it ONLY opens files with broken tests.
 
-$EDITOR `ls target/test-reports/TEST-*.xml \
+firefox -p coding `ls target/test-reports/TEST-*.xml \
 	| xargs grep -L '<testsuite errors="0" failures="0"'`
