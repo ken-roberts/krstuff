@@ -1,0 +1,21 @@
+#!/bin/bash
+function scrub {
+	ip address list $1 | sed 's/\(inet6\) \([0-9a-fA-F]\{1,4\}:\)\{3\}\(..* scope global ..*\)/\1 ea7:dead:beef:\3/g'
+}
+
+function colorize {
+	egrep --color '^|inet|inet6|ea7:dead:beef|global'
+}
+
+readarray -t NOLO <<< `ip link list | grep '^[0-9]*:' | sed 's/^[0-9]*: \([^:@]*\)..*/\1/'\ | grep -v '^lo$' | sort`
+
+LOLO=('lo')
+
+# iplist is a scripted pipe which scrubs public IP addresses for use on forums.
+scrub lo | colorize
+I=2
+for nic in ${NOLO[@]}
+do
+	scrub $nic | sed "s/^[0-9][0-9]*/$I/" | colorize
+	((I++))
+done
