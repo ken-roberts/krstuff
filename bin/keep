@@ -1,0 +1,1 @@
+mv $RIGHT/$1 $LEFT

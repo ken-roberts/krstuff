@@ -4,5 +4,5 @@
 # Values here override things in the default krstuff config, so this can be sparse.
 # This is a callback from standard krstuff.
 
-export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+#export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 

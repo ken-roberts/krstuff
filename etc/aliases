@@ -37,12 +37,14 @@ alias gprl='git pull --rebase --log'
 alias slog='svn log | head -n 50'
 alias gco='git checkout'
 alias gcom='git checkout master'
+alias gco9='git checkout 9.9.x'
+alias gco3='git checkout 9.9.3.y'
 alias grpo='git remote prune origin'
 alias gba='git branch -a'
 alias gs='git status'
 
 # Grails development related aliases.
-alias cdt='cd ~/ws/master/head'
+alias cdt='cd ~/ws/99/head'
 
 GRAILS="gg"
 alias glbl='less target/build.log'
@@ -69,9 +71,13 @@ alias gptestdb="grails -DBMS=ms test create-db clean --non-interactive=y;grails 
 alias gproddb="grails prod create-db clean --non-interactive=y"
 
 # grails database targets for newer databases.
-alias gtdb="$GRAILS  -DBMS=my test db-create"
+# mysql
+alias gbdb='$GRAILS  -DBMS=my -Dgrails.env=base db-create'
 alias gddb="$GRAILS  -DBMS=my dev db-create"
 alias ghdb='$GRAILS  -DBMS=my -Dgrails.env=hist db-create'
+alias gtdb="$GRAILS  -DBMS=my test db-create"
+# mssql
+alias gpbdb="$GRAILS -DBMS=ms -Dgrails.env=base db-create"
 alias gpddb="$GRAILS -DBMS=ms dev db-create"
 alias gphdb='$GRAILS -DBMS=ms -Dgrails.env=hist db-create'
 alias gptdb="$GRAILS -DBMS=ms test db-create"

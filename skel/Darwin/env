@@ -4,9 +4,9 @@ echo "KRSTUFF: Reading local env"
 # Set up environment specific to this system.
 # Values here override things in the default krstuff config, so this can be sparse.
 
-GRAILS_OPTS='-Xmx1024M -XX:MaxPermSize=384M'
-JAVA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
-CATALINA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
+#GRAILS_OPTS='-Xmx1024M -XX:MaxPermSize=384M'
+#JAVA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
+#CATALINA_OPTS="-Xmx768m -XX:MaxPermSize=256M"
 
 # KR_PATH is set up in KRSTUFF as the prefix for everything else.
 

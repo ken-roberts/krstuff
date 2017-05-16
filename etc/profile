@@ -6,7 +6,7 @@
 [[ -s "$KRSTUFF_HOME/etc/homes"    ]] && source "$KRSTUFF_HOME/etc/homes"
 
 # Read in local homes
-[[ -s "$KRSTUFF_LOCAL_ETC/homes"   ]] && source "$KRSTUFF_LOCAL_ETC/homes"
+[[ -s "$KRSTUFF_CONFIG/homes"   ]] && source "$KRSTUFF_CONFIG/homes"
 
 if [ `id -u` = 0 ]; then
 	# This is root user, don't take '.' in path.
@@ -24,7 +24,7 @@ fi
 #    . /opt/local/etc/bash_completion
 #fi
 
-[[ -s "$KRSTUFF_LOCAL_ETC/env"     ]] && source "$KRSTUFF_LOCAL_ETC/env"
-[[ -s "$KRSTUFF_LOCAL_ETC/aliases" ]] && source "$KRSTUFF_LOCAL_ETC/aliases"
+[[ -s "$KRSTUFF_CONFIG/env"     ]] && source "$KRSTUFF_CONFIG/env"
+[[ -s "$KRSTUFF_CONFIG/aliases" ]] && source "$KRSTUFF_CONFIG/aliases"
 
 [[ -n "$KRSTUFF_LOG" ]]	&& echo "Leaving ${BASH_SOURCE[0]}"

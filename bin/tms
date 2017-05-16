@@ -5,4 +5,4 @@ tmux list-sessions
 
 echo
 echo "Available tmux sessions: (inside tmux: C-b source \`tm <name>\`)"
-ls -1 ~/.tm/
+ls -1 $HOME/.tm/
