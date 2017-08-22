@@ -12,3 +12,7 @@ To ssh to an internal host through an exposed host:
 To scp to an internal host through an exposed host:
 
 '''scp -o ProxyCommand='ssh me@exposedhost nc internalhost 22' me@internalhost:/path/to/file.txt /path/to/dest/'''
+
+or
+
+'''scp -o ProxyCommand='ssh -W internalhost:22 me@exposedhost' me@internalhost:/path/to/file.txt /path/to/dest/'''
