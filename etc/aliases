@@ -12,6 +12,8 @@ alias mcd=make_and_change_dir
 alias c='clear'
 alias bb="$BROWSER"
 alias df='df -h'
+alias dud='du -hs `ls -A`'
+alias dudg='du -hs `ls -A` | grep G'
 
 UNAME="`uname -s`"
 if [ "$UNAME" = 'Darwin' ]; then
