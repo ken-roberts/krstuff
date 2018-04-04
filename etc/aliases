@@ -46,7 +46,7 @@ alias gba='git branch -a'
 alias gs='git status'
 
 # Grails development related aliases.
-alias cdt='cd ~/ws/99/head'
+alias cdt='cd ~/ws/dev/head'
 
 GRAILS="gg"
 alias glbl='less target/build.log'
