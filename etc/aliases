@@ -63,6 +63,7 @@ alias gra="$GRAILS -Ddisable.auto.recompile=false run-app"
 alias grat="$GRAILS test run-app"
 alias grw="$GRAILS run-war"
 alias gta="$GRAILS test-app -echoOut"
+alias grd="$GRAILS refresh-dependencies"
 
 # grails database targets for older databases
 alias gdevdb="grails  -DBMS=my dev create-db clean --non-interactive=y;grails -DBMS=my dev dbm-update"
