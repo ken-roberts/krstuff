@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SESSION=`basename $0`
+BASEDIR="$HOME/ws/95/95-tti"
+
+
+tmux -2 new-session   -d -s "$SESSION" -c "$BASEDIR/rootLocation" -n "rootLocation"
+#tmux -2 new-window    -kt $SESSION:1 -c "$BASEDIR/q" -n "q"
+tmux -2 new-window    -kt $SESSION:1 -c "$BASEDIR/database"     -n "database"
+tmux -2 new-window    -kt $SESSION:2 -c "$BASEDIR/rally"        -n "rally"
+tmux -2 new-window    -kt $SESSION:3 -c "$BASEDIR/ar"           -n "ar"
+tmux -2 new-window    -kt $SESSION:4 -c "$BASEDIR/autocash"     -n "cash"
+tmux -2 new-window    -kt $SESSION:5 -c "$BASEDIR/nine-history" -n "hist"
+tmux -2 new-window    -kt $SESSION:6 -c "$BASEDIR/ar-api"       -n "arapi"
+tmux -2 new-window    -kt $SESSION:7 -c "$BASEDIR/dsrv"         -n "dsrv"
+tmux -2 new-window    -kt $SESSION:8 -c "$BASEDIR/dcs"          -n "dcs"
+tmux -2 new-window    -kt $SESSION:9 -c "$BASEDIR/sparkle"      -n "sparkle"
+tmux -2 select-window -t $SESSION:1
+

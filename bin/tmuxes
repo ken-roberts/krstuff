@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#TERM=xterm-256color tmux -f $KRSTUFF_CONFIG/tmuxes.conf
+
+TMUXD=~/.krstuff/tmux.d
+
+for session in `ls $TMUXD | sort -V`; do $TMUXD/$session; done; 

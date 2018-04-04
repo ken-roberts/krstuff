@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SESSION=`basename "$0"`
+BASEDIR="$HOME/ws/misc"
+alias cdmisc="cd $BASEDIR"
+
+tmux -2 new-session -d -s "$SESSION"   -c "$BASEDIR/docker"         -n "docker"
+tmux -2 new-window     -kt $SESSION:1  -c "$BASEDIR/k9"             -n "k9"
+tmux -2 new-window     -kt $SESSION:2  -c "$BASEDIR/knowledge-base" -n "knowledge-base"
+tmux -2 new-window     -kt $SESSION:3  -c "$BASEDIR/9ci"            -n "9ci"
+tmux -2 new-window     -kt $SESSION:4  -c "$BASEDIR/documentation"  -n "documentation"
+tmux -2 new-window     -kt $SESSION:5  -c "/usr/local/krstuff"      -n "krstuff"
+tmux -2 new-window     -kt $SESSION:6  -c "$HOME/.krstuff"          -n ".krstuff"
+#tmux -2 new-window     -kt $SESSION:1  -c "$BASEDIR/q"               -n "q"
+tmux -2 select-window  -t $SESSION:0

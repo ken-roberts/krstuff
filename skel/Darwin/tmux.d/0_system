@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SESSION=`basename "$0"`
+BASEDIR="$HOME"
+TARGET="$SESSION:dashboard"
+
+tmux -2 new-session   -d -s "$SESSION" -n "dashboard" -c "$BASEDIR"
+X=`tmux list-panes -t $TARGET | wc -l`
+echo $X
+if (( $X < 2 ));then
+tmux -2 split-window  -ht $TARGET   -l85
+tmux -2 split-window  -vt $TARGET.1 -l53
+tmux -2 split-window  -vt $TARGET.2 -l28
+tmux -2 send-keys     -t  $TARGET.1 "clear" C-m
+tmux -2 send-keys     -t  $TARGET.2 "clear" C-m
+tmux -2 send-keys     -t  $TARGET.3 "top" C-m
+tmux -2 select-pane   -t  $TARGET.0
+tmux -2 select-window -t  $TARGET
+fi
