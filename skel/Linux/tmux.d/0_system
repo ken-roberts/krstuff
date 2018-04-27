@@ -10,7 +10,7 @@ if (( $X < 2 ));then
 tmux -2 split-window  -ht $TARGET   -l 81
 tmux -2 split-window  -vt $TARGET.1 -l 53
 tmux -2 split-window  -vt $TARGET.2 -l 28
-sleep 0.1 && tmux -2 resize-pane -t $TARGET.1 -x 81 &
+sleep 0.1 && tmux -2 resize-pane -t $TARGET.1 -x 85 &
 sleep 0.5 && tmux -2 send-keys -t $TARGET.0 "clear" C-m &
 sleep 0.5 && tmux -2 send-keys -t $TARGET.1 "clear" C-m &
 sleep 0.5 && tmux -2 send-keys -t $TARGET.2 "clear" C-m &
