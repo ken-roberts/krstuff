@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Watched:"
+cat .config \
+| grep -f /root/kernel.grepf \
+| grep -vf /root/kernel.grepv
+
+echo "Not Found:"
+cat .config \
+| grep -Lf /root/kernel.grepf

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Watched:"
+zcat /proc/config.gz \
+| grep -f /root/kernel.grepf \
+| grep -vf /root/kernel.grepv
+
+echo "Not Found:"
+zcat /proc/config.gz \
+| grep -Lf /root/kernel.grepf
