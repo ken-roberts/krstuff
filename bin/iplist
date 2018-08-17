@@ -1,10 +1,10 @@
 #!/bin/bash
 function scrub {
-	ip address list $1 | sed 's/\(inet6\) \([0-9a-fA-F]\{1,4\}:\)\{3\}\(..* scope global ..*\)/\1 ea7:dead:beef:\3/g'
+	ip address list $1 | sed 's/\(inet6\) \([0-9a-fA-F]\{1,4\}:\)\{4\}\(..* scope global ..*\)/\1 dad:ea75:dead:beef:\3/g'
 }
 
 function colorize {
-	egrep --color '^|inet|inet6|ea7:dead:beef|global'
+	egrep --color '^|inet|inet6|dad:ea75:dead:beef|global'
 }
 
 readarray -t NOLO <<< `ip link list | grep '^[0-9]*:' | sed 's/^[0-9]*: \([^:@]*\)..*/\1/'\ | grep -v '^lo$' | sort`
