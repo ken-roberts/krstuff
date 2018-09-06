@@ -1,2 +1,2 @@
-ntpq -c rv
+ntpq -c rv | egrep --color '(stratum=[0-9]*|)'
 ntpq -nc peers
