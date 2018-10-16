@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SESSION=`basename "$0"`
+BASEDIR="$HOME/ws/misc"
+alias cdmisc="cd $BASEDIR"
+
+tmux -2 new-session   -d -s "$SESSION" -c "$BASEDIR"                            -n "$BASEDIR"
+tmux -2 new-window     -kt $SESSION:1  -c "$BASEDIR/build-test-data"            -n "build-test-data"
+tmux -2 new-window     -kt $SESSION:2  -c "$BASEDIR/codenarc-extra"             -n "codenarc-extra"
+tmux -2 new-window     -kt $SESSION:3  -c "$BASEDIR/dock9"                      -n "dock9"
+tmux -2 new-window     -kt $SESSION:4  -c "$BASEDIR/gorm-hibernate5"            -n "gorm-hibernate5"
+tmux -2 new-window     -kt $SESSION:5  -c "$BASEDIR/gorm-rest-api"              -n "gorm-rest-api"
+tmux -2 new-window     -kt $SESSION:6  -c "$BASEDIR/gorm-tools"                 -n "gorm-tools"
+tmux -2 new-window     -kt $SESSION:7  -c "$BASEDIR/grails-async"               -n "grails-async"
+tmux -2 new-window     -kt $SESSION:8  -c "$BASEDIR/grails-common-build"        -n "grails-common-build"
+tmux -2 new-window     -kt $SESSION:9  -c "$BASEDIR/grails-data-mapping"        -n "grails-data-mapping"
+tmux -2 new-window     -kt $SESSION:10 -c "$BASEDIR/grails-freemarker"          -n "grails-freemarker"
+tmux -2 new-window     -kt $SESSION:11 -c "$BASEDIR/grails-jasper-reports"      -n "grails-jasper-reports"
+tmux -2 new-window     -kt $SESSION:12 -c "$BASEDIR/idea-bank"                  -n "idea-bank"
+tmux -2 new-window     -kt $SESSION:13 -c "$BASEDIR/mkdocs-material-components" -n "mkdocs-material-components"
+tmux -2 new-window     -kt $SESSION:14 -c "$BASEDIR/quartz-config-scheduler"    -n "quartz-config-scheduler"
+tmux -2 new-window     -kt $SESSION:15 -c "$BASEDIR/spring-security-eventlog"   -n "spring-security-eventlog"
+tmux -2 new-window     -kt $SESSION:16 -c "$BASEDIR/view-tools"                 -n "view-tools"
+tmux -2 select-window  -t  $SESSION:1

@@ -4,6 +4,6 @@ SESSION=`basename "$0"`
 BASEDIR="$HOME/ws/misc"
 alias cdmisc="cd $BASEDIR"
 
-tmux -2 new-session -d -s "$SESSION"   -c "$BASEDIR/docker"         -n "docker"
-#tmux -2 new-window     -kt $SESSION:1  -c "$BASEDIR/q"               -n "q"
-tmux -2 select-window  -t $SESSION:0
+tmux -2 new-session   -d -s "$SESSION" -c "$BASEDIR" -n "$BASEDIR"
+tmux -2 new-window     -kt $SESSION:1  -c "$BASEDIR/docker" -n "docker"
+tmux -2 select-window  -t  $SESSION:1
