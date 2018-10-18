@@ -1,1 +1,1 @@
-tmux -2 attach-session -t docs
+tmux -2 attach-session -t 0_system
