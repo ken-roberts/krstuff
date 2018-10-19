@@ -4,6 +4,12 @@ SESSION=`basename "$0"`
 BASEDIR="$HOME/ws/ken-roberts"
 
 tmux -2 new-session   -d -s "$SESSION" -c "$BASEDIR" -n "$BASEDIR"
-tmux -2 new-window     -kt $SESSION:1  -c "$BASEDIR/foster-db"      -n "foster-db"
-tmux -2 new-window     -kt $SESSION:2  -c "$BASEDIR/foster-base"    -n "foster-base"
-tmux -2 select-window  -t $SESSION:0
+tmux -2 new-window     -kt $SESSION:1  -c "$BASEDIR/budget"       -n "budget"
+tmux -2 new-window     -kt $SESSION:2  -c "$BASEDIR/crib-notes"   -n "crib-notes"
+tmux -2 new-window     -kt $SESSION:3  -c "$BASEDIR/foster-db"    -n "foster-db"
+tmux -2 new-window     -kt $SESSION:4  -c "$BASEDIR/foster-base"  -n "foster-base"
+tmux -2 new-window     -kt $SESSION:5  -c "$BASEDIR/foster-core"  -n "foster-core"
+tmux -2 new-window     -kt $SESSION:6  -c "$BASEDIR/foster-forms" -n "foster-forms"
+tmux -2 new-window     -kt $SESSION:7  -c "$BASEDIR/picturebook"  -n "picturebook"
+tmux -2 select-window  -t $SESSION:2
+>>>>>>> Updates from chronos
