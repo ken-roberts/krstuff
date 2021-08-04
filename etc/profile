@@ -1,30 +1,37 @@
-#!bin/bash
 # Ken Roberts 2010-11-02
-[[ -n "$KRSTUFF_LOG" ]]	&& echo "Entering ${BASH_SOURCE[0]}"
+# Modified 2021-08-04
 
-# Read in standard homes
-[[ -s "$KRSTUFF_HOME/etc/homes"    ]] && source "$KRSTUFF_HOME/etc/homes"
+export KRSTUFF_HOME='/usr/local/krstuff'
+export KRSTUFF_CONFIG_HOME="${HOME}/.krstuff"
 
-# Read in local homes
-[[ -s "$KRSTUFF_CONFIG/homes"   ]] && source "$KRSTUFF_CONFIG/homes"
+function krstuff_log {
+	# Entering or Leaving
+	[[ -n "${KRSTUFF_LOG}" ]] && echo "$1 ${BASH_SOURCE[0]}"
+}
 
-if [ `id -u` = 0 ]; then
-	# This is root user, don't take '.' in path.
-        KR_PATH="$HOME/bin:$KRSTUFF_HOME/bin"
-else
-	# This is a normal user, '.' is OK.
-        KR_PATH=".:$HOME/bin:$KRSTUFF_HOME/bin:$GVM_PATH"
+function make_and_change_dir {
+	/bin/mkdir -p "$1"
+	cd "$1"
+}
+
+function safe_source {
+	[[ -s "$1" ]] && echo "Sourcing $1" && source "$1"
+}
+
+krstuff_log "Entering"
+
+safe_source "${KRSTUFF_HOME}/platform_profile.d/`uname -s`.sh"
+
+KCONFIG_PROFILE_D="${KRSTUFF_CONFIG_HOME}/bash_profile.d"
+if [ ! -d "$KCONFIG_PROFILE_D" ]; then
+	echo "${KCONFIG_PROFILE_D} does not exist!  Exiting."
+	exit 9999
 fi
 
-[[ -s "$KRSTUFF_HOME/etc/env"      ]] && source "$KRSTUFF_HOME/etc/env"
-[[ -s "$KRSTUFF_HOME/etc/aliases"  ]] && source "$KRSTUFF_HOME/etc/aliases"
+cd "${KCONFIG_PROFILE_D}"
+#for F in S*.sh; do
+for F in S*.sh; do
+	safe_source "${KCONFIG_PROFILE_D}/${F}"
+done;
 
-# Pull in the mac-standard development tools.  You should be doing this in .bash_profile, but do it AFTER the things in krstuff.
-#if [ -f /opt/local/etc/bash_completion ]; then
-#    . /opt/local/etc/bash_completion
-#fi
-
-[[ -s "$KRSTUFF_CONFIG/env"     ]] && source "$KRSTUFF_CONFIG/env"
-[[ -s "$KRSTUFF_CONFIG/aliases" ]] && source "$KRSTUFF_CONFIG/aliases"
-
-[[ -n "$KRSTUFF_LOG" ]]	&& echo "Leaving ${BASH_SOURCE[0]}"
+krstuff_log "Leaving"
