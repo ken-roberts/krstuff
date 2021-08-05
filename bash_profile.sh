@@ -15,7 +15,11 @@ function make_and_change_dir {
 }
 
 function safe_source {
-	[[ -s "$1" ]] && echo "Sourcing $1" && source "$1"
+	if [ -n "${KRSTUFF_LOG}" ];then
+		[[ -s "$1" ]] && echo "Sourcing $1" && source "$1"
+	else
+		[[ -s "$1" ]] && source "$1"
+	fi
 }
 
 krstuff_log "Entering"
@@ -28,10 +32,11 @@ if [ ! -d "$KCONFIG_PROFILE_D" ]; then
 	exit 9999
 fi
 
+OLDWD=$PWD
 cd "${KCONFIG_PROFILE_D}"
-#for F in S*.sh; do
 for F in S*.sh; do
 	safe_source "${KCONFIG_PROFILE_D}/${F}"
 done;
+cd $OLDWD
 
 krstuff_log "Leaving"
