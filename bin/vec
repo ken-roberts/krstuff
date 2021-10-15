@@ -2,4 +2,4 @@
 # Ken Roberts 2010-11-02
 # Searches for any files containing the parameter, and edits them.
 # Ignores .git and any directory named build.
-$EDITOR `find . -type f -print | sed 's/..*/"&"/' | egrep -v '(\<\.git\>|\<build\>)' | xargs egrep -l "$1"` "+/$1"
+vim `find . -type f -print | sed 's/..*/"&"/' | egrep -v '(\<\.git\>|\<build\>)' | xargs egrep -l "$1"` "+/$1"

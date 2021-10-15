@@ -1,0 +1,7 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Searches for files with the given name, and edits them
+# Case insensitive.
+# Ignores the build directory.
+
+vim `find . -name $1 -print | grep -v '\<build\>'`

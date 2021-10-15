@@ -14,12 +14,17 @@ UNAME="`uname -s`"
 if [ "$UNAME" = 'Darwin' ]; then
 	alias ll='ls -alhG'
 	alias err='open target/test-reports/html/index.html'
+	alias diff='colordiff'
+	alias ctags='/usr/local/bin/ctags'
+	alias ps='/bin/ps ax'
+	alias psj='/bin/ps ax | grep java'
+	alias psg='/bin/ps ax | grep'
 elif [ "$UNAME" = 'Linux' ]; then
 	alias ll='ls --color -alh'
 	alias err='$BROWSER target/test-reports/html/index.html'
+	alias ps='/bin/ps axf'
+	alias psj='/bin/ps axf | grep java'
+	alias psg='/bin/ps axf | grep'
 fi
-alias ps='/bin/ps axf'
-alias psj='/bin/ps axf | grep java'
-alias psg='/bin/ps axf | grep'
 
 krstuff_log 'Leaving'

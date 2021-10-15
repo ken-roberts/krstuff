@@ -8,16 +8,16 @@ set -o physical
 
 BROWSER='chrome'
 CDPATH='.:..'
-EDITOR='vim'
+EDITOR='code --wait'
 HISTTIMEFORMAT="%Z %Y-%m-%d %H:%M:%S"
 HISTFILESIZE=30000
 HISTSIZE=10000
-PROMPT_COMMAND="history -a;history -c;history -r"
+HISTCONTROL=ignoredups:erasedups
+#PROMPT_COMMAND="history -a;history -c;history -r"
+#shopt -s histappend
 
-shopt -s histappend
 
 
-
-export BROWSER CDPATH EDITOR ENV HISTFILESIZE HISTSIZE HISTTIMEFORMAT PROMPT_COMMAND
+export BROWSER CDPATH EDITOR ENV HISTFILESIZE HISTSIZE HISTTIMEFORMAT HISTCONTROL
 
 krstuff_log 'Leaving'

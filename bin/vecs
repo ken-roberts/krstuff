@@ -1,0 +1,6 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Searches for sql files containing the parameter, and edits them.
+# Ignores .svn and any directory named build.
+
+vim `find . -name '*.sql' -print | xargs grep -il "$1"` "+/$1"

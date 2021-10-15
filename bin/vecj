@@ -1,0 +1,6 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Searches for any java files containing the parameter, and edits them.
+# Ignores .svn and any directory named build.
+
+vim `find . -name '*.java' -print | sort | xargs grep -l "$1"` "+/$1"
