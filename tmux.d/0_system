@@ -2,8 +2,20 @@
 
 SESSION=`basename "$0"`
 TARGET="$SESSION:dashboard"
+BASEDIR="$HOME"
 
 tmux -2 new-session   -d -s "$SESSION" -n "dashboard" -c "$HOME"
+tmux -2 new-window    -kt $SESSION:1  -c $BASEDIR/.ivy2         -n .ivy2
+tmux -2 new-window    -kt $SESSION:2  -c $BASEDIR/.kube/configs -n .kube/configs
+tmux -2 new-window    -kt $SESSION:3  -c $BASEDIR/.m2           -n .m2
+tmux -2 new-window    -kt $SESSION:4  -c $BASEDIR/.ssh          -n .ssh
+tmux -2 new-window    -kt $SESSION:5  -c $BASEDIR/Desktop       -n Desktop
+tmux -2 new-window    -kt $SESSION:6  -c $BASEDIR/Documents     -n Documents
+tmux -2 new-window    -kt $SESSION:7  -c $BASEDIR/Downloads     -n Downloads
+tmux -2 new-window    -kt $SESSION:8  -c $BASEDIR/Pictures      -n Pictures
+tmux -2 new-window    -kt $SESSION:9  -c $BASEDIR/src           -n src
+tmux -2 select-window -t $SESSION:7
+
 # X=`tmux list-panes -t $TARGET | wc -l`
 # echo $X
 # if (( $X < 2 ));then

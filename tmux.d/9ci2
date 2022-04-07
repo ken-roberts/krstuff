@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SESSION=`basename "$0"`
+BASEDIR="$HOME/github/9ci"
+alias cddev="cd $BASEDIR"
+
+tmux -2 new-session   -d -s "$SESSION" -c "$BASEDIR" -n "$BASEDIR"
+tmux -2 new-window     -kt $SESSION:1  -c "$BASEDIR/rootLocation" -n "rootLocation"
+tmux -2 new-window     -kt $SESSION:2  -c "$BASEDIR/cust-ced"     -n "cust-ced"
+tmux -2 new-window     -kt $SESSION:3  -c "$BASEDIR/kens-notes"   -n "kens-notes"
+tmux -2 new-window     -kt $SESSION:4  -c "$BASEDIR/oci"          -n "oci"
+tmux -2 new-window     -kt $SESSION:5  -c "$BASEDIR/oktapoc"      -n "oktapoc"
+tmux -2 new-window     -kt $SESSION:6  -c "$BASEDIR/rcm"          -n "rcm"
+tmux -2 new-window     -kt $SESSION:7  -c "$BASEDIR/traction"     -n "traction"
+tmux -2 select-window  -t $SESSION:7

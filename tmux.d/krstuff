@@ -14,4 +14,4 @@ tmux -2 new-window     -kt $SESSION:6  -c "/usr/local/krstuff/bin"              
 tmux -2 new-window     -kt $SESSION:7  -c "/usr/local/krstuff/etc.d"              -n "KRS/etc.d"
 tmux -2 new-window     -kt $SESSION:8  -c "/usr/local/krstuff/platform_profile.d" -n "KRS/platform_profile.d"
 tmux -2 new-window     -kt $SESSION:9  -c "/usr/local/krstuff/tmux.d"             -n "KRS/tmux.d"
-tmux -2 select-window  -t $SESSION:1
+tmux -2 select-window  -t $SESSION:3
