@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# This script gets a list of non-system pods, with colorized highlighting for things that we use.
+# In addition you can add parameters and those words will be highlighted as well.
+
+# If you run through the number of console colors then you're going to get weird output.
+
+CMD="kubectl get pods --show-labels=true -o wide -A "
+# CMD+="| awk 'NR==1||!/cattle-system|kube-system|cert-manager|fleet-system/' "
+CMD+="| GREP_COLOR='01;31' egrep --color=always '(\<app=[^,]*|$)' "
+CMD+="| GREP_COLOR='01;32' egrep --color=always '(\<role=[^,]*|$)' "
+CMD+="| GREP_COLOR='01;33' egrep --color=always '(\<db=[^,]*|$)' "
+CMD+="| GREP_COLOR='01;34' egrep --color=always '(\<lke32971-50451-61046238ad32|$)' "
+CMD+="| GREP_COLOR='01;35' egrep --color=always '(\<lke32971-50451-61046238b4f0|$)' "
+CMD+="| GREP_COLOR='01;36' egrep --color=always '(\<lke32971-50451-61046238be79|$)' "
+CMD+="| GREP_COLOR='01;38' egrep --color=always '(\<lke32971-50451-619075dd8e5e|$)' "
+CMD+="| GREP_COLOR='01;31' egrep --color=always '(\<lke32971-50451-61bcc20f768e|$)' "
+
+FILTERS=""
+i=31
+for arg in $@; do
+  FILTERS+="| GREP_COLOR='01;$i' egrep --color=always '($arg|\$)' "
+  i=$((i+1))
+done
+
+CMD+=$FILTERS
+
+eval $CMD
+
+

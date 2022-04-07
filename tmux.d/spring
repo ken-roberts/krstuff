@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SESSION=`basename "$0"`
+BASEDIR="$HOME/github/spring-projects"
+alias cdmisc="cd $BASEDIR"
+
+tmux -2 new-session   -d -s "$SESSION" -c "$BASEDIR"                  -n "$BASEDIR"
+tmux -2 new-window     -kt $SESSION:1  -c "$BASEDIR/spring-boot"      -n "spring-boot"
+tmux -2 new-window     -kt $SESSION:2  -c "$BASEDIR/spring-framework" -n "spring-framework"
+tmux -2 select-window  -t  $SESSION:2

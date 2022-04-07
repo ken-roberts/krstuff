@@ -19,7 +19,7 @@ modified 2021-08-04 Ken Roberts
 2. The install script sets everything up for your user, everything turned on.
 3. You look in 2 directories and remove things you don't like.
 
-## ~/.krstuff/bash\_profile.d
+## ~/.krstuff/etc.d
 
 This is the heart of bash configuration scripts. What you see here is a symbolic link to every file in $KRSTUFF\_HOME/etc.d/.
 The bash\_profile.sh file will pull each of these, in order, into your .bash\_profile configuration.

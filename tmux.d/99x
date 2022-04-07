@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SESSION=`basename "$0"`
-BASEDIR="$HOME/ws/99/99x"
+BASEDIR="$HOME/github/9ci-99x"
 alias cd99="cd $BASEDIR"
 
 tmux -2 new-session   -d -s "$SESSION" -c "$BASEDIR" -n "$BASEDIR"

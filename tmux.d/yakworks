@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SESSION=`basename "$0"`
-BASEDIR="$HOME/ws/yakworks"
+BASEDIR="$HOME/github/yakworks"
 alias cdmisc="cd $BASEDIR"
 
 tmux -2 new-session   -d -s "$SESSION" -c "$BASEDIR"                    -n "$BASEDIR"

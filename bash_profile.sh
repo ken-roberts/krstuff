@@ -26,7 +26,7 @@ krstuff_log "Entering"
 
 safe_source "${KRSTUFF_HOME}/platform_profile.d/`uname -s`.sh"
 
-KCONFIG_PROFILE_D="${KRSTUFF_CONFIG_HOME}/bash_profile.d"
+KCONFIG_PROFILE_D="${KRSTUFF_CONFIG_HOME}/etc.d"
 if [ ! -d "$KCONFIG_PROFILE_D" ]; then
 	echo "${KCONFIG_PROFILE_D} does not exist!  Exiting."
 	exit 9999
