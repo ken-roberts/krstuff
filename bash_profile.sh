@@ -34,7 +34,7 @@ fi
 
 OLDWD=$PWD
 cd "${KCONFIG_PROFILE_D}"
-for F in S*.sh; do
+for F in *.sh; do
 	safe_source "${KCONFIG_PROFILE_D}/${F}"
 done;
 cd $OLDWD

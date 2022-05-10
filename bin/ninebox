@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+NAME=$(kubectl get pods -A -l role=nfs-server -o name | sed 's/pod\///')
+kubectl exec --stdin --tty -n storage $NAME -- /bin/bash
