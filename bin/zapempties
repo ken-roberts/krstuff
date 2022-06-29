@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+for d in $(ls); do
+  N=$(find $d -type f | wc -l | sed 's/ //g')
+  if [ $(N) -eq 0 ]; then
+    A="DELETE"
+  else
+    A="KEEP"
+  f
+  echo "$(N)      $d      - $(A)""
+done

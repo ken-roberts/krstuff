@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+kubectl get pods -A -l role=$1 -o custom-columns=NAMESPACE:metadata.namespace,NAME:metadata.name

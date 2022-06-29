@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+kubectl get pods -A -l role=nfs-server -o custom-columns=NAMESPACE:metadata.namespace,NAME:metadata.name

@@ -1,3 +1,3 @@
 # Setup PATH from HOMES.
 
-PATH=".:${KRSTUFF_HOME}/bin:${PATH}"
+PATH=".:/Users/ken/github/9ci/lke-rancher/utils:${KRSTUFF_HOME}/bin:${PATH}"

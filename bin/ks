@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+
+COLS=( `getpodbyrole $1 | tail -n 1 | sed 's/  */ /g'` )
+echo "Connecting to ${COLS[*]}"
+NAMESPACE=${COLS[0]}
+NAME=${COLS[1]}
+kubectl exec --stdin --tty -n $NAMESPACE $NAME -- /bin/bash

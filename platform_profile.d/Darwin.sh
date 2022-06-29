@@ -4,3 +4,4 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 alias ps='ps ax'
 alias psg='ps ax | grep'
 
+alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'

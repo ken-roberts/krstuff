@@ -1,0 +1,9 @@
+#!/bin/bash
+
+SESSION=`basename "$0"`
+BASEDIR="$HOME/Documents/tmux-junk"
+mkdir -p $BASEDIR
+
+tmux -2 new-session   -d -s "$SESSION" -c "$BASEDIR" -n "shell"
+#tmux -2 new-window     -kt $SESSION:1  -c "$BASEDIR" -n "shell"
+tmux -2 select-window  -t $SESSION:0

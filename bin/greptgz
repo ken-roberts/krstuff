@@ -1,0 +1,11 @@
+#!/bin/bash
+# Ken Roberts 2010-11-02
+# Lists any .tgz files in the current directory structure which contain a class with the indicated name.
+# Case insensitive.
+
+for file in $(find . -name '*.tgz' -print)
+do
+	#echo $file
+	tar -tzf $file | grep --label $file -il $1
+done
+exit 0

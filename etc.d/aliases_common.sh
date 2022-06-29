@@ -10,6 +10,7 @@ alias df='df -h'
 alias dud='du -hs `ls -A`'
 alias dudg='du -hs `ls -A` | grep G'
 alias dnsreset='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+alias fixterm='export TERM=xterm-256color'
 
 UNAME="`uname -s`"
 if [ "$UNAME" = 'Darwin' ]; then

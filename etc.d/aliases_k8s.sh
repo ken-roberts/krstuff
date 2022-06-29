@@ -1,9 +1,14 @@
 # Kubernetes-specific settings to be read in from ~/.bash_profile
 
 alias k=kubectl
-alias kc="kubectl config"
+alias kc='kubectl config'
+alias kccc='kubectl config current-context'
+alias kcgc='kubectl config get-contexts'
+alias kcuc='kubectl config use-context'
+alias kgd='get-deployments-with-labels'
 alias mk=minikube
 alias mkc='minikube config'
+
 source <(kubectl completion bash)
 
 ### --- kubectl ---
